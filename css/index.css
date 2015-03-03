@@ -1,0 +1,113 @@
+@charset "gb2312";
+/*--------ÍÆ¼öÎÄÕÂ-------*/
+.topblog{ overflow:hidden; height:256px}
+.topblog h3,.template h3{ background:#ececec; border-bottom:#FFF 1px solid; width:100%;overflow:hidden; font-size:14px; margin:0 0 10px 0; font-family:"Î¢ÈíÑÅºÚ"}
+.topblog h3 p,.template h3 p{ background:#474645; width:180px; height:25px; margin:15px 0 0 10px; line-height:25px; height:25px; color:#fff; text-align:center; box-shadow: #999 4px 5px 1px;}
+.topblog h3 p span{ color:#fd5daa}
+.shoprush {background: url(http://idc.yangqq.com/images/shoprush.gif) no-repeat 350px 0px;}
+.template h3 p span{ color:#38b3d4}/*Ä£°å¶¯Ì¬ h3 ÑùÊ½*/
+.topblog img{ margin-left:10px; clear:left; float:left}
+.topblog ul{ background:#f5f5f5 url(../images/libg.png) no-repeat 15px 15px; border:#dddddd 1px solid; border-left:0; border-bottom:0;list-style-type:none; line-height:26px; float:right; width:55%; margin-right:5px}
+.topblog ul li{  text-align:center; border-bottom:#dddddd 1px solid; border-top:#FFF 1px solid; padding:7px 0;font-family:"Î¢ÈíÑÅºÚ"}
+.topblog ul li span{ display:block; font-size:12px; color:#999999; font-weight:normal}
+.topblog ul li a{ color:#ef7000; font-size:20px; font-weight:bold; display:block}
+.topblog ul li a:hover{ color:#000;}
+/*--------Ä£°å¶¯Ì¬-------*/
+.template ul{ list-style-type:none; padding: 0 0 0 20px ; overflow: auto; zoom:1; border-bottom:#383838 4px solid; height:130px; margin: 0 5px}
+.template ul li{position:relative; margin:11px; float:left;}
+.template ul li img{ width:142px; height:80px; background:#FFF; padding:4px;  box-shadow:0px 0px 2px rgba(0,0,0,.5); display:block}
+.template ul li span{
+	background: url(../images/libg.png) no-repeat 0 -200px;
+	position: absolute;
+	left: -3px;
+	width: 57px;
+	height: 62px;
+	top: -5px;
+}
+/*--------Tags-------*/
+.tags{ width:330px; float:left; font-family:"Î¢ÈíÑÅºÚ"; margin:15px 20px;display:inline}
+.tags h2{ color:#333; font-size:18px; border-bottom:#b4b1af 2px solid; background:url(../images/libg.png) -60px -243px no-repeat; line-height:40px; height:40px; overflow:hidden}
+.tags h2 span{ color:#b41828}
+.tags h2 a{ float:right; background:url(../images/libg.png) 0 -258px no-repeat; width:20px; height:30px}
+.tags ul{ list-style-type:none; margin:10px; border-bottom:#bebdbb 1px dashed; overflow:auto; zoom:1; padding:10px 0 20px 0 }
+.tags ul li{ display:block; float:left; padding:5px; color:#FFF;}
+.tags ul li a{ color:#575654; display:block; }
+.tags ul li a:hover{ color: #F00; text-decoration:underline}
+.web{ background:#f11139; color:#036; }
+.web2{background:#00b6e5; color:#036; }
+/* bloglist index */
+.bloglist{ width:99%; background:#f1f1f1; margin:20px 5px;border-top:#383838 4px solid; clear:both; overflow:hidden; padding:20px 0 0 0}
+.bloglist h2{ background: url(../images/libg.png) 10px -294px no-repeat; line-height:29px; height:29px; font-size:14px; color:#3b3b3b; padding:10px 0 10px 50px;}
+.bloglist h2 a{color:#3b3b3b; display:block; width:80%}
+.bloglist h2 a:hover{ width:90%; background: #ccc;cursor:pointer; -webkit-transition: all 0.5s; -moz-transition: all 0.5s; -o-transition: all 0.5s;text-shadow:#fff 1px 1px 1px;padding-left:40px}
+.bloglist ul{ line-height:24px; padding:0 10px; margin-bottom:20px}
+.bloglist ul p{ text-indent:2em}
+.readmore{ margin: 10px}
+.readmore a{ color:#e84545;}
+.readmore a:hover{ color:#333}
+.dateview{ background:#f6f6f6 url(../images/libg.png) 10px -340px no-repeat; line-height:24px; height:24px; color:#838383; margin:0 10px}
+.dateview a{color:#838383;}
+.dateview a:hover{ color:#333;}
+.dateview span{ margin:0 10px}
+/* Side Right */
+aside.navsidebar nav{ height:150px;}
+aside nav ul{ list-style-type:none; text-align:center;}
+aside nav ul li{ float:left; width:90px; line-height:74px; height:74px; margin-right:2px}
+aside nav ul li a:hover{ -webkit-transition: all 1s;-moz-transition: all 1s;-ms-transition: all 1s;-o-transition: all 1s;transition: all 1s;}
+aside nav ul li.ab{ background:#71a532;}
+aside nav ul li.ab a:hover{-moz-transform:rotate(360deg);-webkit-transform:rotate(360deg); -o-transform:rotate(360deg);-ms-transform:rotate(360deg);  background:#666;}
+aside nav ul li.sy{ background:#ff9900}
+aside nav ul li.sy a:hover{-moz-transform:rotate(360deg);-webkit-transform:rotate(360deg); -o-transform:rotate(360deg);-ms-transform:rotate(360deg);  background: #F60;}
+aside nav ul li.js{ background:#8c49ad}
+aside nav ul li.js a:hover{-moz-transform:rotate(360deg);-webkit-transform:rotate(360deg); -o-transform:rotate(360deg); -ms-transform:rotate(360deg); background: #66C;}
+aside nav ul li.msh{ background:#e7769e}
+aside nav ul li.msh a:hover{-moz-transform:rotate(360deg);-webkit-transform:rotate(360deg); -o-transform:rotate(360deg);-ms-transform:rotate(360deg);  background: #F66;}
+aside nav ul li.xc{ background:#a98659}
+aside nav ul li.xc a:hover{-moz-transform:rotate(360deg);-webkit-transform:rotate(360deg); -o-transform:rotate(360deg); -ms-transform:rotate(360deg); background: #C93;}
+aside nav ul li.ly{ background:#63a8e8}
+aside nav ul li.ly a:hover{-moz-transform:rotate(360deg);-webkit-transform:rotate(360deg); -o-transform:rotate(360deg);-ms-transform:rotate(360deg);  background: #06C;}
+aside nav ul li a{ display:block; color:#FFF;}
+aside nav ul li a:hover{font-weight:bold; color:#FF0}
+.geyan{ background:#f16e50; height:140px; width:100%; margin:10px 0 ;position: relative; overflow:hidden; color:#FFF; }
+.geyan p{ margin:40px 20px  0 20px; line-height:30px}
+.slider { position: absolute; left:0; top: 0;}
+.slider li {overflow:hidden;padding:40px 20px; line-height:25px}
+.slider li a{color: #FFF; }
+.slider li a:hover{ color: #FFC}
+.about img{ float:left; clear:right; margin-right:5px}
+.about p{ line-height:25px}
+.vcard img{ float:left; clear:right; margin-right:5px}
+.vcard p{ line-height:25px}
+/*×ó²àÀ¸ ÁÐ±í*/
+.newbolg{ margin:10px 0 0 0;}
+.newbolg h2{color: #FFF;background:#f16e50; line-height:36px; font-size:12px; font-weight:normal; padding:0 0 0 15px;height:36px}
+.newbolg h2 a{ color:#FFF}
+.rank{ list-style-type:none; margin-bottom:20px}
+.rank li i{ background: url(../images/icons.png) no-repeat scroll -999em 0 transparent;}
+.rank li.nh1 i, .rank li.nh2 i, .rank li.nh3 i { width: 41px;height: 42px; background: url(../images/rank123.png) no-repeat scroll -999em 0 transparent; display: block; float: left; margin: 0 10px 0 0;}
+.rank li.nh1, .rank li.nh2, .rank li.nh3 { height: 42px;line-height: 42px;background: url(../images/rank123.png) repeat-x 0 0;margin: 1px 0;overflow: hidden;}
+.rank li { height: 25px;line-height: 25px;vertical-align: bottom;clear: both;padding-left: 5px;overflow: hidden;}
+.rank li a{ color:#333;}
+.rank li a:hover{ color: #F00; text-decoration:underline}
+.rank li.nh1 i { background-position: 0 -42px;}
+.rank li.nh2 i { background-position: -42px -42px;}
+.rank li.nh3 i { background-position: -84px -42px;}
+.rank li i { width: 15px; height: 13px; display: block; float: left; margin: 6px 5px 0 0;}
+.rank li.n4 i { background-position: -133px -62px;}
+.rank li.n5 i { background-position: -148px -62px;}
+.rank li.n6 i { background-position: -163px -62px;}
+.rank li.n7 i { background-position: -178px -62px;}
+.rank li.n8 i { background-position: -193px -62px;}
+.rank li.n9 i { background-position: -208px -62px;}
+.rank li.n10 i { background-position: -223px -62px;}
+/* ·ÖÏí */
+.share h2{ background:url(../images/libg.png) 0 -370px no-repeat; height:30px; line-height:30px;border-bottom:#333 2px solid ; overflow:hidden}
+.share p{ margin:10px; clear:both}
+.visitors{width:100%; margin-top:20px}
+.visitors h2,.hotcomm h2{border-bottom:#333 2px solid; font-size:14px; line-height:40px; height:40px; color:#383734}
+.visitors ul{ margin:10px}
+/* ÈÈÆÀlist */
+.hotcomm ul{ list-style-type:none; background:url(../images/libg.png) 0 -395px no-repeat; margin-top:10px}
+.hotcomm ul li a{ display:block; color:#525252; padding-left:30px;cursor:pointer; overflow: hidden;white-space: nowrap;text-overflow: ellipsis; line-height:36px; height:36px; overflow:hidden }
+.hotcomm ul li a:hover{ text-decoration:underline; color:#F00}
+

@@ -1,0 +1,189 @@
+/* about.html */
+.geyan{ background:#f16e50; height:140px; width:100%; margin:10px 0 ;position: relative; overflow:hidden; color:#FFF; }
+.geyan p{ margin:40px 20px  0 20px; line-height:30px}
+.aboutcon{ width:754px; float:left; line-height:24px;height:750px;box-shadow:#666 1px 1px 5px; }
+.aboutcon ul{ padding:20px; text-indent:2em;}
+.aboutcon h1{ margin:20px 30px; font-size:32px;font-family: 'Sail', cursive; font-weight:normal}
+.aboutcon p{ margin:0  0 20px}
+.about_p{ margin:10px 0 0 45px; background:#333}
+.about_c{ line-height:24px; padding:0 20px}
+/* newlist.html */
+article{background:#F1F0EE; width:1030px; margin:auto; overflow:hidden; padding:15px}
+.newlist{ width:700px; float:left;}
+.newlist h2{ border-bottom:#AC0B0B 3px solid; line-height:40px; font-size:12px; font-weight:normal}
+.newlist h2 a{ color:#666}
+.newlist ul{ list-style-type:none; margin:20px 10px 20px 20px}
+.newlist ul li { background: url(../images/list.gif) no-repeat 0px 10px; padding-left:25px;line-height:25px; padding-right:30px; height:25px; font-size:14px }
+.newlist ul li span { float:right; color:#999}
+.newlist ul li a{ color:#333; display:block;-webkit-transition: all 0.5s; -moz-transition: all 0.5s; -o-transition: all 0.5s; -ms-transition: all 0.5s;}
+.newlist ul li a:hover{ color: #fff; text-shadow:#000 1px 1px 1px; background: #999; padding-left:30px}
+.page{ padding:20px 0 0 0; text-align:center; width:100%;}
+.page a{ color:#F33; padding:5px 10px; margin: 0 2px; border:#999 1px solid}
+.page a:hover{ background:#333; color:#FFF;}
+.page a b{ padding:0; background:none; color:#999}
+.page b{background:#333;padding:5px 10px; margin: 0 2px; color:#FFF}
+.boxr{ width:300px; float:right;}
+.boxr nav{ margin:10px 0}
+.boxr nav ul{ list-style-type:none; text-align:center;}
+.boxr nav ul li{ float:left; width:98px; line-height:74px; height:74px; margin:0px 2px 2px 0}
+.boxr nav ul li a:hover{ -webkit-transition: all 1s;-moz-transition: all 1s;-ms-transition: all 1s;-o-transition: all 1s;transition: all 1s;-moz-transform:rotate(360deg);-webkit-transform:rotate(360deg); -o-transform:rotate(360deg);-ms-transform:rotate(360deg)}
+.boxr nav ul li.ab{background: #EF7D12}
+.boxr nav ul li.sy{ background:#8c49ad}
+.boxr nav ul li.js{ background: #F66;}
+.boxr nav ul li.msh{ background: #6BC233}
+.boxr nav ul li.xc{ background: #2999E3}
+.boxr nav ul li.ly{ background:#666}
+.boxr nav ul li a{ display:block; color:#FFF;}
+.boxr nav ul li a:hover{font-weight:bold; color:#FF0}
+.newbolg{ border:#D8D8D6 1px solid; border-top:#AC0B0B 3px solid; clear:both; margin: 5px  0 10px 0; }
+.newbolg h2{ font-size:14px; color:#000; line-height:30px; padding:0 0 0 10px}
+.newbolg ul{ margin:10px; background:url(../images/ph.png) no-repeat 0 2px; list-style:none}
+.newbolg ul li{ padding-left:28px}
+.newbolg ul li a{ display:block; color:#525252;cursor:pointer; overflow: hidden;white-space: nowrap;text-overflow: ellipsis; line-height:24px; height:24px; overflow:hidden ;}
+.newbolg ul li a:hover{ text-decoration:underline; color:#F00}
+/* new.html */
+#index_about{width:700px; float:left; padding-right:14px; overflow:hidden}
+#index_about h2{ border-bottom:#AC0B0B 3px solid; line-height:40px; font-size:12px; font-weight:normal}
+#index_about h2 a{ color:#666}
+#index_about ul { padding:0 30px 15px 30px; overflow:auto; zoom:1; background:url(../images/pro_bg.png) bottom no-repeat;}
+#index_about ul p{ line-height:28px; font-size:14px; margin:10px 0; text-indent:2em}
+#index_about ul img{_width:expression((document.documentElement.clientWidth||document.body.clientWidth)<600?"600px":"");overflow:hidden; max-width:600px;}
+.c_titile{ text-align:center; font-size:22px; margin:20px 0; color:#000}
+.box{ border:#ccc 1px dashed; text-align:center; padding:5px 0; margin:0 30px 10px 30px}
+.share{ width:100%; height:30px; padding-left:400px}
+/* 相关文章list */
+.otherlink ul{ margin:10px 0}
+.otherlink li{ line-height:24px; height:24px; display:block; width:290px; float:left; overflow:hidden; margin-right:30px}
+.otherlink li a{ float:left; width:300px;display:block; color:#333;cursor:pointer; overflow: hidden;white-space: nowrap;text-overflow: ellipsis;}
+.otherlink li a:hover{ color:#F00; text-decoration:underline}
+/* 最近访客 */
+.visitors{width:100%; margin-top:10px}
+.visitors h2,.hotcomm h2{border-bottom:#333 2px solid; font-size:14px; line-height:40px; height:40px; color:#383734}
+.visitors ul{ margin:10px}
+/* 热评list */
+.hotcomm ul{ list-style-type:none; background:url(../images/libg.png) 0 -395px no-repeat; margin-top:10px}
+.hotcomm ul li a{ display:block; color:#525252; padding-left:30px;cursor:pointer; overflow: hidden;white-space: nowrap;text-overflow: ellipsis; line-height:36px; height:36px; overflow:hidden }
+.hotcomm ul li a:hover{ text-decoration:underline; color:#F00}
+/* moodlist.html */
+.moodlist{ width:700px; float:left; }
+.moodlist ul{list-style-type:none}
+.moodlist ul li{line-height:24px; padding:20px; background:#FFF; box-shadow:#999 1px 1px 3px; border-radius:5px; margin:10px  }
+.moodlist ul li span { float:right}
+.moodlist ul li a{ color:#666; display:block}
+.moodlist ul li a:hover{ display:block; color:#000}
+.moodlist ul li:hover{border-bottom:#333 3px solid}
+/* book.html */
+#gbooklist{width:740px; float:left;}
+#gbooklist ul{ padding:20px 30px;background:#fff; margin:8px 0 0 0;box-shadow:#999 1px 1px 3px; border-radius:5px;}
+.gb_tit{ color:#333; height:30px; line-height:30px;}
+.gb_con{line-height:1.9; }
+.gb_tit span{ float:right}
+.gb_tit b{ padding-left:10px}
+.gb_tit b a{ color:#000}
+.gb_tit b a:hover{ text-decoration:underline}
+.gb_reply{ line-height:50px; padding-left:60px; background: url(../images/50.jpg) no-repeat #fff; margin:10px 0 0 0; border:#CCC 1px dashed;}
+.gb_reply span{ color:#e15782;font-weight:bold}
+#faqbox {width:380px;margin:0 auto; padding-top:30px;}
+#faqbox .faqline{ line-height:2em; height:35px; text-align:left}
+#faqbox .faqline .faqtit{  width:70px; display:block; float:left; clear:both; text-align:right}
+#faqbox .Content{ line-height:2em; height:120px; text-align:left}
+#faqbox .Content  .faqtit{  width:70px; display:block; float:left; clear:both; text-align:right}
+#faqbox .Content textarea { height:100px;}
+
+/* ablumlist.html */
+.in-qq {width:100%;height:270px;border-top:6px solid #333;}
+.in-qq dd{width:240px;height:190px;margin:12px 8px;float:left;display:inline}
+.in-qq dd i{width:13px;height:13px;background:url(../images/a.gif) no-repeat -177px -40px;float:right;margin-top:-26px}
+.in-qq dd a{color:#666;border-bottom:4px solid #E8E5DD;line-height:30px;display:block; text-align:center}
+.in-qq dd a:hover{color:#000;border-bottom:4px solid #333;text-decoration:none}
+
+/* 未知大小的图片在已知容器中的垂直居中和水平居中 */
+.in-qq dd img{margin-top:expression(100-this.height/2);max-height:160px}/* max-height可限制图片的最大高度 */
+.in-qq dd p{width:238px;height:158px;border:1px solid #ccc;overflow:hidden;text-align:center;vertical-align:middle;display:table-cell}
+/* 未知大小的图片在已知容器中的垂直居中和水平居中 */
+
+
+
+
+.canlist ul{  
+overflow:hidden;  
+padding:3em; list-style-type:none
+} 
+.canlist ul h2{  
+font-size:10px;  
+font-weight:normal; color:#666  
+} 
+.canlist ul li a{  
+text-decoration:none;  
+color:#000  ;  
+background:#ffc  ;  
+display:block; 
+padding: 1em; /* Firefox */   
+padding:5px; width:150px; height:150px ;
+-moz-box-shadow: 5px 5px 7px rgba(33,33,33,1)  ; /* Safari+Chrome */  
+-webkit-box-shadow: 5px 5px 7px rgba(33,33,33,.7)  ; /* Opera */  
+box-shadow: 5px 5px 7px rgba(33,33,33,.7)  ;  
+-webkit-transform:rotate(-6deg);  
+-o-transform:rotate(-6deg);  
+-moz-transform:rotate(-6deg); 
+-moz-transition:-moz-transform .15s linear;  
+-o-transition:-o-transform .15s linear;  
+-webkit-transition:-webkit-transform .15s linear; 
+
+
+
+}  
+.canlist ul li{  
+margin:1em;  
+float:left; line-height:20px; 
+}  
+
+.canlist ul li:nth-child(even) a{  
+-o-transform:rotate(4deg);  
+-webkit-transform:rotate(4deg);  
+-moz-transform:rotate(4deg);  
+position:relative;  
+top:5px;  
+background:#cfc  ;  
+}  
+.canlist ul li:nth-child(3n) a{  
+-o-transform:rotate(-3deg);  
+-webkit-transform:rotate(-3deg);  
+-moz-transform:rotate(-3deg);  
+position:relative;  
+top:-5px;  
+background:#ccf  ; 
+}  
+.canlist ul li:nth-child(5n) a{  
+-o-transform:rotate(5deg);  
+-webkit-transform:rotate(5deg);  
+-moz-transform:rotate(5deg);  
+position:relative;  
+top:-10px;  
+}  
+
+
+.canlist ul li a:hover,ul li a:focus{  
+-moz-box-shadow:10px 10px 7px rgba(0,0,0,.7)  ;  
+-webkit-box-shadow: 10px 10px 7px rgba(0,0,0,.7)  ;  
+box-shadow:10px 10px 7px rgba(0,0,0,.7)  ;  
+-webkit-transform: scale(1.25);  
+-moz-transform: scale(1.25);  
+-o-transform: scale(1.25);  
+position:relative;  
+z-index:5;  
+}  
+
+
+#tbox{width:47px; height:73px; float:right; position:fixed;
+_position:absolute;
+_bottom:auto;
+_top:expression(eval(document.documentElement.scrollTop+document.documentElement.clientHeight-this.offsetHeight-(parseInt(this.currentStyle.marginTop,10)||0)-(parseInt(this.currentStyle.marginBottom,10)||0)));
+_margin-bottom:10px;
+}/*解决IE6下不兼容 position:fixed 的问题*/
+#jianyi{ width:47px; height:25px; background:url(../images/suggest.png) no-repeat; position:absolute; bottom:0px; cursor:pointer}
+#gotop{ width:47px; height:47px; background:url(../images/top01.png) no-repeat; position:absolute; top:0px; display:none; cursor:pointer} 
+#jianyi:hover{ background:url(../images/suggest.png) no-repeat 0px -26px;}
+#gotop:hover{ background:url(../images/top02.png) no-repeat;}
+
+
