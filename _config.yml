@@ -21,7 +21,7 @@ url: http://zcwsmile.github.io
 #rss_url: /pages/atom.xml
 
 # gavatar头像及Favicon
-gavatar: /images_zc/upload/gavatar/gavatar.png
+avatar: /images_zc/upload/gavatar/gavatar.png
 favicon: /images_zc/upload/gavatar/favicon.ico
 # weixin:  /images_zc/upload/weixin/weixin.png
 
