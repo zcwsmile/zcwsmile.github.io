@@ -1,8 +1,7 @@
 ### My blog:
 
 Address：[http://kiveen.science](http://kiveen.science)(有效期2016-03-01)
-
-        [http://zcwsmile.github.io](http://zcwsmile.github.io)
+Address：[http://zcwsmile.github.io](http://zcwsmile.github.io)
 
 ### Declaration:
 
