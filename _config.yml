@@ -30,7 +30,7 @@ favicon: /public/upload/gavatar/favicon.ico
 
 # disqus 设置
 disqus:
-  shortname: yuandong618
+  shortname: zcwsmile
 
 # 主题设置，自动激活某个标签
 active: 技术
