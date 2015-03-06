@@ -8,7 +8,7 @@ title: Welcome
 Hi, thank you for visiting this blog. My name is Kiveen, a C++ developer in Shenzhen.China. I mainly write about computer technology that I have been playing with, then I maybe share some ideas of live, the observation of society and so on.
 
 If you have any question, suggestion or correction, pls feel free to leave a comment or contact me with <font style="color:blue;" >zcwsmile@gmail.com</font>, and it will be appreciated.
-![my WeiXin](/images_zc/upload/weixin.png"扫一扫")
+![my WeiXin](/images_zc/upload/weixin.png)
 
 
 
