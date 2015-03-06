@@ -5,17 +5,17 @@ markdown: redcarpet #markdown 解释器
 
 # 作者信息
 author: 
-  name: 远东 
-  email: yuandong618@gmail.com
-  link: http://yuandong.im
-  github: http://github.com/yuandong618
-  weibo: http://weibo.com/yuandong618
-  stackoverflow: http://stackoverflow.com/users/4030932/frank
+  name: kiv 
+  email: zcwsmile@gmail.com
+  link: http://kiveen.science
+  github: http://github.com/zcwsmile
+  weibo: http://weibo.com/zcwsmile
+  stackoverflow: 
 
 # 站点信息
-title: 远东的博客 
-description: 远东的博客
-url: http://yuandong.im
+title: Kiveen 
+description: Kiveen.zhao
+url: http://kiveen.science
 #rss_url: /pages/atom.xml
 
 # gavatar头像及Favicon
@@ -30,7 +30,7 @@ favicon: /public/upload/gavatar/favicon.ico
 
 # disqus 设置
 disqus:
-  shortname: yuandong618
+  shortname: zcwsmile
 
 # 主题设置，自动激活某个标签
 active: 技术
