@@ -1,0 +1,50 @@
+#该配置文件中请勿使用tab键
+permalink: /:year/:month/:day/:title.html
+paginate: 10
+markdown: redcarpet #markdown 解释器
+
+# 作者信息
+author: 
+  name: 远东 
+  email: yuandong618@gmail.com
+  link: http://yuandong.im
+  github: http://github.com/yuandong618
+  weibo: http://weibo.com/yuandong618
+  stackoverflow: http://stackoverflow.com/users/4030932/frank
+
+# 站点信息
+title: 远东的博客 
+description: 远东的博客
+url: http://yuandong.im
+#rss_url: /pages/atom.xml
+
+# gavatar头像及Favicon
+gavatar: /public/upload/gavatar/gavatar.png
+favicon: /public/upload/gavatar/favicon.ico
+# weixin:  /public/upload/weixin/weixin.png
+
+# google analytics 设置
+#ga:
+# id: UA-43667383-1
+# url: yuandong.im
+
+# disqus 设置
+disqus:
+  shortname: yuandong618
+
+# 主题设置，自动激活某个标签
+active: 技术
+
+# 首页除了最新文章外显示分类
+cates: 
+# - .Net
+#- Ruby
+  #- OpenStack
+
+# 中文本地化
+locals:
+  tags: 标签
+  about: 关于
+  links: 链接
+  newest: 最新文章
+  archive: 归档 
