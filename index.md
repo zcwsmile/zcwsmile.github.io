@@ -14,7 +14,6 @@ If you have any question, suggestion or correction, pls feel free to leave a com
 
 ***
 
-<br />
-### <font style="color:green;" >博客--可以由自己主宰的空间</font>
+<font style="color:green;" >博客--可以由自己主宰的空间</font>
 
 这个博客通过 [Jekyll](http://jekyllrb.com/) 生成，部署在 [Github](https://pages.github.com)，主题基于 [3-Jekyll](https://github.com/P233/3-Jekyll) 修改生成，非常感谢 [Peiwen Lu](https://github.com/P233) 开发出这么漂亮的主题。我博客的源码托管在[Github](https://github.com/zcwsmile/zcwsmile.github.io)。
