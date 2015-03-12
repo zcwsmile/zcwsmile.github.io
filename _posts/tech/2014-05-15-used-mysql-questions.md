@@ -6,11 +6,11 @@ tags: [Pattern]
 keywords: MSSQL
 ---
 
-##SQL Server 2008登录错误:无法连接到(local)解决方法：
+## SQL Server 2008登录错误:无法连接到(local)解决方法：
       服务器类型：数据库引擎
       服务器名称写上：计算机名\安装SQL Server时自己创建的实例名。如：ZH-PC\ZCDB。填(local)或.会报错（肯定前提数据库的服务得启动）。
 
-##拷贝数据库：
+## 拷贝数据库：
  ①数据库相同版本的导出备份
  ②用Navicat工具进行2个远程数据库的导入和导出(http://www.yishimei.cn/network/26.html)
  ③(未试)拷贝a.mdf,a.ldf到你的另外一台机器上.
@@ -20,7 +20,7 @@ keywords: MSSQL
      @filename1 = N'c:\Program Files\Microsoft SQL Server\MSSQL\Data\pubs.mdf', 
      @filename2 = N'c:\Program Files\Microsoft SQL Server\MSSQL\Data\pubs_log.ldf'
 
-##char、varchar、nchar、nvarchar的区别(MSSQL)
+## char、varchar、nchar、nvarchar的区别(MSSQL)
 对于程序中的string型字段，SQLServer中有char、varchar、nchar、nvarchar四种类型来对应（暂时不考虑text和ntext），开建立数据库中，对这四种类型往往比较模糊，这里做一下对比。
 
 定长或变长
@@ -48,7 +48,7 @@ NCHAR、NVARCHAR、NTEXT
 这三种从名字上看比前面三种多了个"N"。和char、varchar比较起来，nchar、nvarchar最多存储4000个字符，不论是英文还是汉字；而char、varchar最多能存储8000个英文，4000个汉字。可以看出使用nchar、nvarchar数据类型时不用担心输入的字符是英文还是汉字，较为方便，但在存储英文时数量上有些损失。
 所以一般来说，如果含有中文字符，用nchar/nvarchar，如果纯英文和数字，用char/varchar。
 
-##MSSQL——快捷键（转自http://blog.csdn.net/qy1387/article/details/7747477）
+## MSSQL——快捷键（转自http://blog.csdn.net/qy1387/article/details/7747477）
 快捷键·F5
 这个恐怕是最常用的快捷键了，用来代替那个“！执行”按钮，写完SQL语句后手不用离开键盘。虽然没什么技术含量，但不会用的人八成是菜鸟。
 
