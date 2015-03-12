@@ -63,7 +63,7 @@ keywords: 设计模式,Pattern,PHP,建造者模式,单例模式,适配器模式,
 ### 关系
 这里有一张各个模式关系图，可以在了解各个模式以后梳理一下
 
-![设计模式](http://7u2ho6.com1.z0.glb.clouddn.com/tech-design-patterns.jpg)
+![设计模式](\images_zc\upload\tech-design-patterns.jpg)
 
 ### 参考
 1. [Wikipedia: Software design pattern](http://en.wikipedia.org/wiki/Software_design_pattern)
@@ -204,16 +204,6 @@ Composite变化的是一个对象的结构和组成。
 
 - 你想表示对象的部分-整体层次结构。
 - 你希望用户忽略组合对象和单个对象的不同，用户将统一地使用组合结构中的所有对象。
-
-#### 安全式合成模式
-
-![safe composite pattern](http://7u2ho6.com1.z0.glb.clouddn.com/tech-safe-composite-pattern-uml.jpg)
-
-#### 透明式合成模式
-
-![transparent composite pattern](http://7u2ho6.com1.z0.glb.clouddn.com/tech-transparent-composite-pattern-uml.jpg)
-
-### 实例
 
 #### 安全式合成模式
 
@@ -517,10 +507,7 @@ Prototype模式的最主要缺点就是每一个类必须配备一个克隆方�
 迭代器模式是一种行为型模式，它是一种最简单也最常见的设计模式。它可以让使用者透过特定的接口巡访容器中的每一个元素而不用了解底层的实作。
 
 ### 适用性
-
 - 在希望利用语言本身的遍历函数便利自定义结构时，例如PHP中的foreach函数
-
-
 
 ### 参考
 1. [Wikipedia: Iterator pattern](http://en.wikipedia.org/wiki/Iterator_pattern)
@@ -551,7 +538,6 @@ Prototype模式的最主要缺点就是每一个类必须配备一个克隆方�
 
 - 必须保存一个对象在某一个时刻的（部分）状态，这样以后需要时它才能恢复到先前的状态。
 - 如果一个用接口来让其它对象直接得到这些状态，将会暴露对象的实现细节并破坏对象的封装性。
-
 
 ### 优缺点
 
@@ -669,7 +655,6 @@ Prototype模式的最主要缺点就是每一个类必须配备一个克隆方�
 #### 缺点
 难以支持新种类的产品。这是因为AbstractFactory接口确定了可以被创建的产品集合。支持新各类的产品就需要扩展访工厂接口，从而导致AbstractFactory类及其所有子类的改变。
 
-
 ### 参考
 1. [Wikipedia: 抽象工厂](http://zh.wikipedia.org/wiki/%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F)
 2. [Wikipedia: Abstract factory pattern](http://en.wikipedia.org/wiki/Abstract_factory_pattern)
@@ -681,7 +666,6 @@ Prototype模式的最主要缺点就是每一个类必须配备一个克隆方�
 在面向对象程序设计中，工厂通常是一个用来创建其他对象的对象。工厂是构造方法的抽象，用来实现不同的分配方案。
 
 ### 主要角色
-
 - 抽象产品(Product)角色：具体产品对象共有的父类或者接口。
 - 具体产品(Concrete Product)角色：实现抽象产品角色所定义的接口
 - 抽象工厂(Creator)角色：它声明了工厂方法，该方法返回Product对象
@@ -690,17 +674,13 @@ Prototype模式的最主要缺点就是每一个类必须配备一个克隆方�
 工厂方法模式就像我们去麦当劳买汉堡，我们只要找到服务员，让他帮我们拿来汉堡即可。其中具体某个服务员就像具体工厂，他继承了服务员应有的服务。汉堡在到手以前属于抽象产品，而我们拿到的汉堡就属于具体产品。
 
 ### 适用性
-
 - 创建对象需要大量重复的代码（例如创建一个MySQL操作类，需要配置很多选项，这些都可以在工厂方法中进行）。
 - 创建对象需要访问某些信息，而这些信息不应该包含在复合类中。
 - 创建对象的生命周期必须集中管理，以保证在整个程序中具有一致的行为。
 
-
-
 上例中的`createButton()`方法即所谓的工厂方法，它所在的类仅仅是这个方法的载体。工厂方法的核心功能是创建类并返回，这个方法可以产生一个类，也可以产生多种类。这个方法本身的载体也并不局限，将其设置为静态方法也是可以的，这个根据自己的情况而定。
 
 ### 优缺点
-
 #### 优点
 工厂方法模式可以允许系统在不修改工厂角色的情况下引进新产品。
 
@@ -733,8 +713,6 @@ Prototype模式的最主要缺点就是每一个类必须配备一个克隆方�
 - 一次性实现一个算法的不变的部分，并将可变的行为留给子类来实现。
 - 各子类中公共的行为应被提取出来并集中到一个公共父类中以避免代码重复。
 - 控制子类扩展。
-
-
 
 ### 参考
 1. [Wikipedia: Template method pattern](http://en.wikipedia.org/wiki/Template_method_pattern)
