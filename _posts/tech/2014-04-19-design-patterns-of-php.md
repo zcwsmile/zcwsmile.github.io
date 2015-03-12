@@ -85,48 +85,6 @@ keywords: 设计模式,Pattern,PHP,建造者模式,单例模式,适配器模式,
 - 当创建复杂对象的算法应该独立于该对象的组成部分以及它们的装配方式时。
 - 当构造过程必须允许被构造的对象有不同的表示时。
 
-### 类图
-![builder pattern](http://7u2ho6.com1.z0.glb.clouddn.com/tech-builder-pattern-uml.png)
-
-### 实例
-
-```php
-<?php
-
-class Product { // 产品本身
-    private $_parts; 
-    public function __construct() { $this->_parts = array(); } 
-    public function add($part) { return array_push($this->_parts, $part); }
-}
- 
-abstract class Builder { // 建造者抽象类
-    public abstract function buildPart1();
-    public abstract function buildPart2();
-    public abstract function getResult();
-}
- 
-class ConcreteBuilder extends Builder { // 具体建造者
-    private $_product;
-    public function __construct() { $this->_product = new Product(); }
-    public function buildPart1() { $this->_product->add("Part1"); } 
-    public function buildPart2() { $this->_product->add("Part2"); }
-    public function getResult() { return $this->_product; }
-}
- 
-class Director { 
-    public function __construct(Builder $builder) {
-        $builder->buildPart1();
-        $builder->buildPart2();
-    }
-}
-
-// client 
-$buidler = new ConcreteBuilder();
-$director = new Director($buidler);
-$product = $buidler->getResult();
-?>
-```
-
 ### 优缺点
 
 #### 优点
@@ -138,7 +96,6 @@ $product = $buidler->getResult();
 ### 参考
 1. [Wikipedia: Bulider pattern](http://en.wikipedia.org/wiki/Builder_pattern)
 2. [Wikipedia: 生成器模式](http://zh.wikipedia.org/wiki/%E7%94%9F%E6%88%90%E5%99%A8%E6%A8%A1%E5%BC%8F)
-3. [PHP设计模式笔记：使用PHP实现建造者模式](http://www.phppan.com/2010/05/php-design-pattern-2-builder/)
 
 
 ## 单例模式（Singleton pattern）
@@ -155,34 +112,6 @@ Singleton定义一个getInstance操作，允许客户访问它唯一的实例。
 
 - 当类只能有一个实例而且客户可以从一个众所周知的访问点访问它时
 - 当这个唯一实例应该是通过子类化可扩展的。并且用户应该无需更改代码就能使用一个扩展的实例时。
-
-### 类图
-![singleton pattern](http://7u2ho6.com1.z0.glb.clouddn.com/tech-singleton-pattern-uml.png)
-
-### 实例
-
-```php
-<?php 
-public class Singleton {
-    private static $_instance = NULL;
-
-    // 私有构造方法 
-    private function __construct() {}
-
-    public static function getInstance() {
-        if (is_null(self::$_instance)) {
-            self::$_instance = new Singleton();
-        }
-        return self::$_instance;
-    }
-
-    // 防止克隆实例
-    public function __clone(){
-        die('Clone is not allowed.' . E_USER_ERROR);
-    }
-}
-?>
-```
 
 在此实例中，Singleton禁止了克隆及外部初始化，使得此类只可以通过`getInstance()`方法来获得实例，而这个实例只会在第一次使用时创建，以后每次都获得同一实例。
 
@@ -201,7 +130,6 @@ public class Singleton {
 ### 参考
 1. [Wikipedia: 单例模式](http://zh.wikipedia.org/wiki/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F)
 2. [Wikipedia: Singleton pattern](http://en.wikipedia.org/wiki/Singleton_pattern)
-3. [PHP设计模式笔记：使用PHP实现单例模式](http://www.phppan.com/2010/06/php-design-pattern-6-singleton/)
 
 ## 适配器模式（Adapter pattern）
 适配器模式是一种结构型模式，它将一个类的接口转接成用户所期待的。一个适配使得因接口不兼容而不能在一起工作的类工作在一起，做法是将类别自己的接口包裹在一个已存在的类中。
@@ -230,74 +158,6 @@ public class Singleton {
 - 允许一个Adapter与多个Adaptee同时工作。Adapter也可以一次给所有的Adaptee添加功能
 - 使用重定义Adaptee的行为比较困难
 
-### 类图
-
-#### 类适配器
-![class adapter pattern](http://7u2ho6.com1.z0.glb.clouddn.com/tech-class-adapter-pattern-uml.jpg)
-
-#### 对象适配器
-![object adapter pattern](http://7u2ho6.com1.z0.glb.clouddn.com/tech-object-adapter-pattern-uml.jpg)
-
-### 实例
-
-#### 类适配器
-
-```php
-<?php
-
-interface Target {
-    public function sampleMethod1();
-    public function sampleMethod2();
-}
- 
-class Adaptee { // 源角色
-    public function sampleMethod1() {}
-}
- 
-class Adapter extends Adaptee implements Target { // 适配后角色
-    public function sampleMethod2() {} 
-}
- 
-// client
-$adapter = new Adapter();
-$adapter->sampleMethod1();
-$adapter->sampleMethod2(); 
-
-?>
-```
-
-#### 对象适配器
-
-```php
-<?php
-
-interface Target {
-    public function sampleMethod1();
-    public function sampleMethod2();
-}
- 
-class Adaptee {
-    public function sampleMethod1() {}
-}
- 
-class Adapter implements Target {
-    private $_adaptee;
-    public function __construct(Adaptee $adaptee) {
-        $this->_adaptee = $adaptee;
-    }
- 
-    public function sampleMethod1() { $this->_adaptee->sampleMethod1(); }
- 
-    public function sampleMethod2() {}
-}
- 
-$adaptee = new Adaptee();
-$adapter = new Adapter($adaptee);
-$adapter->sampleMethod1();
-$adapter->sampleMethod2();
-?>
-```
-
 ### 参考
 1. [Wikipedia: Adapter pattern](http://en.wikipedia.org/wiki/Adapter_pattern)
 2. [Wikipedia: 适配器模式](http://zh.wikipedia.org/wiki/%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F)
@@ -318,49 +178,6 @@ $adapter->sampleMethod2();
 - 设计要求实现化角色的任何改变不应当影响客户端，或者说实现化角色的改变对客户端是完全透明的。
 - 一个构件有多于一个的抽象化角色和实现化角色，并且系统需要它们之间进行动态的耦合。
 - 虽然在系统中使用继承是没有问题的，但是由于抽象化角色和具体化角色需要独立变化，设计要求需要独立管理这两者。
-
-### 类图
-
-![bridge pattern](http://7u2ho6.com1.z0.glb.clouddn.com/tech-bridge-pattern-uml.jpg)
-
-### 实例
-
-```php
-<?php
-abstract class Abstraction { // 抽象化角色，抽象化给出的定义，并保存一个对实现化对象的引用。    
-    protected $imp; // 对实现化对象的引用
-    public function operation() {
-        $this->imp->operationImp();
-    }
-}
- 
-class RefinedAbstraction extends Abstraction { // 修正抽象化角色, 扩展抽象化角色，改变和修正父类对抽象化的定义。
-     public function __construct(Implementor $imp) {
-        $this->imp = $imp;
-    }
-    public function operation() { $this->imp->operationImp(); }
-}
- 
-abstract class Implementor { // 实现化角色, 给出实现化角色的接口，但不给出具体的实现。
-    abstract public function operationImp();
-}
- 
-class ConcreteImplementorA extends Implementor { // 具体化角色A
-    public function operationImp() {}
-}
- 
-class ConcreteImplementorB extends Implementor { // 具体化角色B
-    public function operationImp() {}
-}
- 
-// client
-$abstraction = new RefinedAbstraction(new ConcreteImplementorA());
-$abstraction->operation();
-
-$abstraction = new RefinedAbstraction(new ConcreteImplementorB());
-$abstraction->operation();
-?>
-```
 
 ### 优点
 - 分离接口及其实现部分, 将Abstraction与Implementor分享有助于降低对实现部分编译时刻的依赖性, 接口与实现分享有助于分层，从而产生更好的结构化系统
@@ -388,8 +205,6 @@ Composite变化的是一个对象的结构和组成。
 - 你想表示对象的部分-整体层次结构。
 - 你希望用户忽略组合对象和单个对象的不同，用户将统一地使用组合结构中的所有对象。
 
-### 类图
-
 #### 安全式合成模式
 
 ![safe composite pattern](http://7u2ho6.com1.z0.glb.clouddn.com/tech-safe-composite-pattern-uml.jpg)
@@ -404,121 +219,8 @@ Composite变化的是一个对象的结构和组成。
 
 在Composite类里面声明所有的用来管理子类对象的方法。这样的做法是安全的。因为树叶类型的对象根本就没有管理子类的方法，因此，如果客户端对树叶类对象使用这些方法时，程序会在编译时期出错。编译通不过，就不会出现运行时期错误。这样的缺点是不够透明，因为树叶类和合成类将具有不同的接口。
 
-```php
-<?php
-interface Component {
-    public function getComposite(); //返回自己的实例
-    public function operation();
-}
- 
-class Composite implements Component { // 树枝组件角色
-    private $_composites;
-    public function __construct() { $this->_composites = array(); }
-    public function getComposite() { return $this; }
-     public function operation() {
-         foreach ($this->_composites as $composite) {
-            $composite->operation();
-        }
-     }
- 
-    public function add(Component $component) {  //聚集管理方法 添加一个子对象
-        $this->_composites[] = $component;
-    }
- 
-    public function remove(Component $component) { // 聚集管理方法 删除一个子对象
-        foreach ($this->_composites as $key => $row) {
-            if ($component == $row) { unset($this->_composites[$key]); return TRUE; }
-        } 
-        return FALSE;
-    }
-
-    public function getChild() { // 聚集管理方法 返回所有的子对象
-       return $this->_composites;
-    }
- 
-}
- 
-class Leaf implements Component {
-    private $_name; 
-    public function __construct($name) { $this->_name = $name; }
-    public function operation() {}
-    public function getComposite() {return null;}
-}
- 
-// client
-$leaf1 = new Leaf('first');
-$leaf2 = new Leaf('second');
-
-$composite = new Composite();
-$composite->add($leaf1);
-$composite->add($leaf2);
-$composite->operation();
-
-$composite->remove($leaf2);
-$composite->operation();
-?>
-```
-
 #### 透明式合成模式
 在Composite类里面声明所有的用来管理子类对象的方法。这样做的是好处是所有的组件类都有相同的接口。在客户端看来，树叶类和合成类对象的区别起码在接口层次上消失了，客户端可以同等的对待所有的对象。这就是透明形式的合成模式，缺点就是不够安全，因为树叶类对象和合成类对象在本质上是有区别的。树叶类对象不可能有下一个层次的对象，因此调用其添加或删除方法就没有意义了，这在编译期间是不会出错的，而只会在运行时期才会出错。
-
-```php
-<?php
-interface Component { // 抽象组件角色
-    public function getComposite(); // 返回自己的实例
-    public function operation(); // 示例方法
-    public function add(Component $component); // 聚集管理方法,添加一个子对象
-    public function remove(Component $component); // 聚集管理方法 删除一个子对象
-    public function getChild(); // 聚集管理方法 返回所有的子对象
-}
- 
-class Composite implements Component { // 树枝组件角色
-    private $_composites;
-    public function __construct() { $this->_composites = array(); } 
-    public function getComposite() { return $this; }
-    public function operation() { // 示例方法，调用各个子对象的operation方法
-        foreach ($this->_composites as $composite) {
-            $composite->operation();
-        }
-    }
-    public function add(Component $component) { // 聚集管理方法 添加一个子对象
-        $this->_composites[] = $component;
-    }
-    public function remove(Component $component) { // 聚集管理方法 删除一个子对象
-        foreach ($this->_composites as $key => $row) {
-            if ($component == $row) { unset($this->_composites[$key]); return TRUE; }
-        } 
-        return FALSE;
-    }
-    public function getChild() { // 聚集管理方法 返回所有的子对象
-       return $this->_composites;
-    }
- 
-}
- 
-class Leaf implements Component {
-    private $_name;
-    public function __construct($name) {$this->_name = $name;}
-    public function operation() {}
-    public function getComposite() { return null; }
-    public function add(Component $component) { return FALSE; }
-    public function remove(Component $component) { return FALSE; }
-    public function getChild() { return null; }
-}
- 
-// client 
-$leaf1 = new Leaf('first');
-$leaf2 = new Leaf('second');
-
-$composite = new Composite();
-$composite->add($leaf1);
-$composite->add($leaf2);
-$composite->operation();
-
-$composite->remove($leaf2);
-$composite->operation();
-?>
-```
 
 ### 优缺点
 #### 优点
@@ -550,64 +252,6 @@ $composite->operation();
 - 在不影响其他对象的情况下，以动态、透明的方式给单个对象添加职责。
 - 处理那些可以撤消的职责，即需要动态的给一个对象添加功能并且这些功能是可以动态的撤消的。
 - 当不能彩生成子类的方法进行扩充时。一种情况是，可能有大量独立的扩展，为支持每一种组合将产生大量的子类，使得子类数目呈爆炸性增长。另一种情况可能是因为类定义被隐藏，或类定义不能用于生成子类。
-
-### 类图
-
-![decorator pattern](http://7u2ho6.com1.z0.glb.clouddn.com/tech-decorator-pattern-uml.jpg)
-
-### 实例
-
-```php
-<?php
-interface Component {
-    public function operation();
-}
- 
-abstract class Decorator implements Component{ // 装饰角色 
-    protected  $_component;
-    public function __construct(Component $component) {
-        $this->_component = $component;
-    }
-    public function operation() {
-        $this->_component->operation();
-    }
-}
- 
-class ConcreteDecoratorA extends Decorator { // 具体装饰类A
-    public function __construct(Component $component) {
-        parent::__construct($component);
-    } 
-    public function operation() {
-        parent::operation();    //  调用装饰类的操作
-        $this->addedOperationA();   //  新增加的操作
-    }
-    public function addedOperationA() {}
-}
-
-class ConcreteDecoratorB extends Decorator { // 具体装饰类B
-    public function __construct(Component $component) {
-        parent::__construct($component);
-    } 
-    public function operation() {
-        parent::operation();
-        $this->addedOperationB();
-    }
-    public function addedOperationB() {}
-}
- 
-class ConcreteComponent implements Component{ 
-    public function operation() {} 
-}
- 
-// clients
-$component = new ConcreteComponent();
-$decoratorA = new ConcreteDecoratorA($component);
-$decoratorB = new ConcreteDecoratorB($decoratorA);
-
-$decoratorA->operation();
-$decoratorB->operation();
-?>
-```
 
 ### 优缺点
 
@@ -647,89 +291,6 @@ $decoratorB->operation();
 - 提高子系统的独立性
 - 在层次化结构中，可以使用门面模式定义系统的每一层的接口
 
-### 类图
-
-![facade pattern](http://7u2ho6.com1.z0.glb.clouddn.com/tech-facade-pattern-uml.jpg)
-
-### 实例
-
-```php
-<?php
-class Camera {
-    public function turnOn() {}
-    public function turnOff() {}
-    public function rotate($degrees) {}
-}
- 
-class Light {
-    public function turnOn() {}
-    public function turnOff() {}
-    public function changeBulb() {}
-}
- 
-class Sensor {
-    public function activate() {}
-    public function deactivate() {}
-    public function trigger() {}
-}
- 
-class Alarm {
-    public function activate() {}
-    public function deactivate() {}
-    public function ring() {}
-    public function stopRing() {}
-}
- 
-class SecurityFacade {
-    private $_camera1, $_camera2;
-    private $_light1, $_light2, $_light3;
-    private $_sensor;
-    private $_alarm;
- 
-    public function __construct() {
-        $this->_camera1 = new Camera();
-        $this->_camera2 = new Camera();
- 
-        $this->_light1 = new Light();
-        $this->_light2 = new Light();
-        $this->_light3 = new Light();
- 
-        $this->_sensor = new Sensor();
-        $this->_alarm = new Alarm();
-    }
- 
-    public function activate() {
-        $this->_camera1->turnOn();
-        $this->_camera2->turnOn();
- 
-        $this->_light1->turnOn();
-        $this->_light2->turnOn();
-        $this->_light3->turnOn();
- 
-        $this->_sensor->activate();
-        $this->_alarm->activate();
-    }
- 
-    public  function deactivate() {
-        $this->_camera1->turnOff();
-        $this->_camera2->turnOff();
- 
-        $this->_light1->turnOff();
-        $this->_light2->turnOff();
-        $this->_light3->turnOff();
- 
-        $this->_sensor->deactivate();
-        $this->_alarm->deactivate();
-    }
-}
- 
- 
-//client 
-$security = new SecurityFacade();
-$security->activate();
-?>
-```
-
 ### 优缺点
 
 #### 优点
@@ -762,61 +323,6 @@ $security->activate();
 - 如果删除对象的外部状态，那么可以用相对较少的共享对象取代很多组对象
 - 应用程序不依赖于对象标识。
 
-### 类图
-
-![flyweight pattern](http://7u2ho6.com1.z0.glb.clouddn.com/tech-flyweight-pattern-uml.jpg)
-
-### 实例
-
-```php
-<?php
-abstract class Flyweight { // 抽象享元角色
-    abstract public function operation($state);
-}
- 
-class ConcreteFlyweight extends Flyweight { // 具体享元角色
-    private $_intrinsicState = null; 
-    public function __construct($state) {
-        $this->_intrinsicState = $state;
-    }
-    public function operation($state) {}
-}
- 
-class UnsharedConcreteFlyweight extends Flyweight { // 不共享的具体享元，客户端直接调用
-    private $_intrinsicState = null;
-    public function __construct($state) {
-        $this->_intrinsicState = $state;
-    }
-    public function operation($state) {}
-}
-
-class FlyweightFactory { // 享元工厂角色 
-    private $_flyweights;
-    public function __construct() {
-        $this->_flyweights = array();
-    }
-    public function getFlyweigth($state) {
-        if (isset($this->_flyweights[$state])) {
-            return $this->_flyweights[$state];
-        } else {
-            return $this->_flyweights[$state] = new ConcreteFlyweight($state);
-        }
-    }
-}
- 
-// client
-$flyweightFactory = new FlyweightFactory();
-$flyweight = $flyweightFactory->getFlyweigth('state A');
-$flyweight->operation('other state A');
-
-$flyweight = $flyweightFactory->getFlyweigth('state B');
-$flyweight->operation('other state B');
-
-// 不共享的对象，单独调用
-$uflyweight = new UnsharedConcreteFlyweight('state A');
-$uflyweight->operation('other state A');
-?>
-```
 
 ### 优缺点
 
@@ -852,70 +358,6 @@ $uflyweight->operation('other state A');
 - 当对一个对象的改变需要同时改变其它对象，而不知道具体有多少个对象待改变。
 - 当一个对象必须通知其它对象，而它又不能假定其它对象是谁。换句话说，你不希望这些对象是紧密耦合的。
 
-### 类图
-
-![observer pattern](http://7u2ho6.com1.z0.glb.clouddn.com/tech-observer-pattern-uml.jpg)
-
-### 实例
-
-```php
-<?php
-interface Subject { // 抽象主题角色
-    public function attach(Observer $observer); // 增加一个新的观察者对象
-    public function detach(Observer $observer); // 删除一个已注册过的观察者对象
-    public function notifyObservers(); // 通知所有注册过的观察者对象
-}
-
-class ConcreteSubject implements Subject { // 具体主题角色
-    private $_observers; 
-    public function __construct() { $this->_observers = array(); }
-    public function attach(Observer $observer) {
-        return array_push($this->_observers, $observer);
-    }
-    public function detach(Observer $observer) {
-        $index = array_search($observer, $this->_observers);
-        if ($index === FALSE || ! array_key_exists($index, $this->_observers)) {
-            return FALSE;
-        } 
-        unset($this->_observers[$index]);
-        return TRUE;
-    }
-    public function notifyObservers() {
-        if (!is_array($this->_observers)) { return FALSE; } 
-        foreach ($this->_observers as $observer) { 
-            $observer->update(); 
-        } 
-        return TRUE;
-    }
- 
-}
-
-interface Observer { // 抽象观察者角色
-    public function update(); // 更新方法
-}
- 
-class ConcreteObserver implements Observer {
-    private $_name; 
-    public function __construct($name) { $this->_name = $name; }
-    public function update() {}
-}
- 
-$subject = new ConcreteSubject();
-
-/* 添加第一个观察者 */
-$observer1 = new ConcreteObserver('Mac');
-$subject->attach($observer1);
-$subject->notifyObservers(); // 主题变化，通知观察者
-
-/* 添加第二个观察者 */
-$observer2 = new ConcreteObserver('Win');
-$subject->attach($observer2);
-$subject->notifyObservers();
-
-$subject->detach($observer1);
-$subject->notifyObservers();
-?>
-```
 
 ### 优缺点
 
@@ -947,32 +389,6 @@ $subject->notifyObservers();
 - 当要实例化的类是在运行时刻指定时，例如动态加载
 - 为了避免创建一个与产品类层次平等的工厂类层次时；
 - 当一个类的实例只能有几个不同状态组合中的一种时。建立相应数目的原型并克隆它们可能比每次用合适的状态手工实例化该类更方便一些
-
-### 类图
-![prototype pattern](http://7u2ho6.com1.z0.glb.clouddn.com/tech-prototype-pattern-uml.jpg)
-
-### 实例
-
-```php
-<?php
-
-interface Prototype { public function copy(); }
- 
-class ConcretePrototype implements Prototype{
-    private  $_name;
-    public function __construct($name) { $this->_name = $name; } 
-    public function copy() { return clone $this;}
-}
- 
-class Demo {}
- 
-// client
- 
-$demo = new Demo();
-$object1 = new ConcretePrototype($demo);
-$object2 = $object1->copy();
-?>
-```
 
 ### 优缺点
 
@@ -1006,44 +422,7 @@ Prototype模式的最主要缺点就是每一个类必须配备一个克隆方�
 - 提高子系统的独立性
 - 在层次化结构中，可以使用门面模式定义系统的每一层的接口
 
-### 类图
 
-![proxy pattern](http://7u2ho6.com1.z0.glb.clouddn.com/tech-proxy-pattern-uml.png)
-
-### 实例
-
-```php
-<?php
-abstract class Subject { // 抽象主题角色
-    abstract public function action();
-}
-
-class RealSubject extends Subject { // 真实主题角色
-    public function __construct() {}
-    public function action() {}
-}
-
-class ProxySubject extends Subject { // 代理主题角色
-    private $_real_subject = NULL;
-    public function __construct() {}
-
-    public function action() {
-        $this->_beforeAction();
-        if (is_null($this->_real_subject)) {
-            $this->_real_subject = new RealSubject();
-        }
-        $this->_real_subject->action();
-        $this->_afterAction();
-    }
-    private function _beforeAction() {}
-    private function _afterAction() {}
-}
-
-// client
-$subject = new ProxySubject();
-$subject->action();
-?>
-```
 
 ### 参考
 1. [Wikipedia: Proxy pattern](http://en.wikipedia.org/wiki/Proxy_pattern)
@@ -1066,54 +445,6 @@ $subject->action();
 - 算法使用客户不应该知道的数据。可使用策略模式以避免暴露复杂的，与算法相关的数据结构
 - 一个类定义了多种行为，并且 这些行为在这个类的操作中以多个形式出现。将相关的条件分支移和它们各自的Strategy类中以代替这些条件语句
 
-### 类图
-
-![strategy pattern](http://7u2ho6.com1.z0.glb.clouddn.com/tech-strategy-pattern-uml.jpg)
-
-### 实例
-
-```php
-<?php
-interface Strategy { // 抽象策略角色，以接口实现
-    public function algorithmInterface(); // 算法接口
-}
-
-class ConcreteStrategyA implements Strategy { // 具体策略角色A 
-    public function algorithmInterface() {}
-}
-
-class ConcreteStrategyB implements Strategy { // 具体策略角色B 
-    public function algorithmInterface() {}
-}
-
-class ConcreteStrategyC implements Strategy { // 具体策略角色C
-    public function algorithmInterface() {}
-}
- 
-class Context { // 环境角色
-    private $_strategy;
-    public function __construct(Strategy $strategy) {
-        $this->_strategy = $strategy;
-    } 
-    public function contextInterface() {
-        $this->_strategy->algorithmInterface();
-    }
-}
- 
-// client
-$strategyA = new ConcreteStrategyA();
-$context = new Context($strategyA);
-$context->contextInterface();
-
-$strategyB = new ConcreteStrategyB();
-$context = new Context($strategyB);
-$context->contextInterface();
-
-$strategyC = new ConcreteStrategyC();
-$context = new Context($strategyC);
-$context->contextInterface();
-?>
-```
 
 ### 优缺点
 
@@ -1155,52 +486,6 @@ $context->contextInterface();
 - 支持修改日志。
 - 用构建在原语操作上的高层操作构造一个系统。Command模式提供了对事务进行建模的方法。Command有一个公共的接口，使得你可以用同一种方式调用所有的事务。同时使用该模式也易于添加新事务以扩展系统。
 
-### 类图
-
-![command pattern](http://7u2ho6.com1.z0.glb.clouddn.com/tech-command-pattern-uml.jpg)
-
-### 实例
-
-```php
-<?php
-interface Command { // 命令角色
-    public function execute(); // 执行方法
-}
-
-class ConcreteCommand implements Command { // 具体命令方法 
-    private $_receiver; 
-    public function __construct(Receiver $receiver) {
-        $this->_receiver = $receiver;
-    }
-    public function execute() {
-        $this->_receiver->action();
-    }
-}
-
-class Receiver { // 接收者角色
-    private $_name;
-    public function __construct($name) {
-        $this->_name = $name;
-    }
-    public function action() { }
-}
-
-class Invoker { // 请求者角色
-    private $_command; 
-    public function __construct(Command $command) {
-        $this->_command = $command;
-    }
-    public function action() {
-        $this->_command->execute();
-    }
-}
- 
-$receiver = new Receiver('hello world');
-$command = new ConcreteCommand($receiver);
-$invoker = new Invoker($command);
-$invoker->action();
-?>
-```
 
 ### 优缺点
 
@@ -1223,62 +508,6 @@ $invoker->action();
 ## 解释器模式（Interpreter pattern）
 解释器模式是一种行为型模式，它给定一个语言, 定义它的文法的一种表示，并定义一个解释器, 该解释器使用该表示来解释语言中的句子。
 
-### 类图
-
-![interpreter pattern](http://7u2ho6.com1.z0.glb.clouddn.com/tech-interpreter-pattern-uml.jpg)
-
-### 实例
-
-```php
-<?php
-class Expression { 
-    function interpreter($str) { 
-        return $str; 
-    } 
-} 
-
-class ExpressionNum extends Expression { 
-    function interpreter($str) { 
-        switch($str) { 
-            case "0": return "零"; 
-            case "1": return "一"; 
-            case "2": return "二"; 
-            case "3": return "三"; 
-            case "4": return "四"; 
-            case "5": return "五"; 
-            case "6": return "六"; 
-            case "7": return "七"; 
-            case "8": return "八"; 
-            case "9": return "九"; 
-        } 
-    } 
-} 
-
-class ExpressionCharater extends Expression { 
-    function interpreter($str) { 
-        return strtoupper($str); 
-    } 
-} 
-
-class Interpreter { 
-    function execute($string) { 
-        $expression = null; 
-        for($i = 0;$i<strlen($string);$i++) { 
-            $temp = $string[$i]; 
-            switch(true) { 
-                case is_numeric($temp): $expression = new ExpressionNum(); break; 
-                default: $expression = new ExpressionCharater(); 
-            } 
-            echo $expression->interpreter($temp); 
-        } 
-    } 
-} 
-
-//client
-$obj = new Interpreter(); 
-$obj->execute("12345abc"); 
-?>
-```
 
 ### 参考
 1. [Wikipedia: Strategy pattern](http://en.wikipedia.org/wiki/Strategy_pattern)
@@ -1291,45 +520,7 @@ $obj->execute("12345abc");
 
 - 在希望利用语言本身的遍历函数便利自定义结构时，例如PHP中的foreach函数
 
-### 实例
 
-```php
-<?php
-class sample implements Iterator {
-    private $_items ;
- 
-    public function __construct(&$data) {
-        $this->_items = $data;
-    }
-    public function current() {
-        return current($this->_items);
-    }
- 
-    public function next() {
-        next($this->_items);   
-    }
- 
-    public function key() {
-        return key($this->_items);
-    }
- 
-    public function rewind() {
-        reset($this->_items);
-    }
- 
-    public function valid() {                                                                              
-        return ($this->current() !== FALSE);
-    }
-}
- 
-// client
-$data = array(1, 2, 3, 4, 5);
-$sa = new sample($data);
-foreach ($sa AS $key => $row) {
-    echo $key, ' ', $row, '<br />';
-}
-?>
-```
 
 ### 参考
 1. [Wikipedia: Iterator pattern](http://en.wikipedia.org/wiki/Iterator_pattern)
@@ -1343,59 +534,6 @@ foreach ($sa AS $key => $row) {
 - 中介者(Mediator）角色：定义了对象间相互作用的接口
 - 具体中介者(ConcreteMediator)角色：实现了中介者定义的接口。
 - 具体对象(ConcreteColleague)角色：通过中介者和别的对象进行交互
-
-### 实例
-
-```php
-<?php
-abstract class Mediator { // 中介者角色
-    abstract public function send($message,$colleague); 
-} 
-
-abstract class Colleague { // 抽象对象
-    private $_mediator = null; 
-    public function __construct($mediator) { 
-        $this->_mediator = $mediator; 
-    } 
-    public function send($message) { 
-        $this->_mediator->send($message,$this); 
-    } 
-    abstract public function notify($message); 
-} 
-
-class ConcreteMediator extends Mediator { // 具体中介者角色
-    private $_colleague1 = null; 
-    private $_colleague2 = null; 
-    public function send($message,$colleague) { 
-        if($colleague == $this->_colleague1) { 
-            $this->_colleague1->notify($message); 
-        } else { 
-            $this->_colleague2->notify($message); 
-        } 
-    }
-    public function set($colleague1,$colleague2) { 
-        $this->_colleague1 = $colleague1; 
-        $this->_colleague2 = $colleague2; 
-    } 
-} 
-
-class Colleague1 extends Colleague { // 具体对象角色
-    public function notify($message) { } 
-} 
-
-class Colleague2 extends Colleague { // 具体对象角色
-    public function notify($message) { } 
-} 
-
-// client
-$objMediator = new ConcreteMediator(); 
-$objC1 = new Colleague1($objMediator); 
-$objC2 = new Colleague2($objMediator); 
-$objMediator->set($objC1,$objC2); 
-$objC1->send("to c2 from c1"); 
-$objC2->send("to c1 from c2"); 
-?>
-```
 
 ### 参考
 1. [Wikipedia: Mediator pattern](http://en.wikipedia.org/wiki/Mediator_pattern)
@@ -1414,68 +552,6 @@ $objC2->send("to c1 from c2");
 - 必须保存一个对象在某一个时刻的（部分）状态，这样以后需要时它才能恢复到先前的状态。
 - 如果一个用接口来让其它对象直接得到这些状态，将会暴露对象的实现细节并破坏对象的封装性。
 
-### 类图
-
-![memento pattern](http://7u2ho6.com1.z0.glb.clouddn.com/tech-memento-pattern-uml.jpg)
-
-### 实例
-
-```php
-<?php
-class Originator { // 发起人(Originator)角色
-    private $_state;
-    public function __construct() {
-        $this->_state = '';
-    }
-    public function createMemento() { // 创建备忘录
-        return new Memento($this->_state);
-    }
-    public function restoreMemento(Memento $memento) { // 将发起人恢复到备忘录对象记录的状态上
-        $this->_state = $memento->getState();
-    }
-    public function setState($state) { $this->_state = $state; } 
-    public function getState() { return $this->_state; }
-    public function showState() {}
- 
-}
-
-class Memento { // 备忘录(Memento)角色 
-    private $_state;
-    public function __construct($state) {
-        $this->setState($state);
-    }
-    public function getState() { return $this->_state; } 
-    public function setState($state) { $this->_state = $state;}
-}
-
-class Caretaker { // 负责人(Caretaker)角色 
-    private $_memento;
-    public function getMemento() { return $this->_memento; } 
-    public function setMemento(Memento $memento) { $this->_memento = $memento; }
-}
- 
-// client
-/* 创建目标对象 */
-$org = new Originator();
-$org->setState('open');
-$org->showState();
-
-/* 创建备忘 */
-$memento = $org->createMemento();
-
-/* 通过Caretaker保存此备忘 */
-$caretaker = new Caretaker();
-$caretaker->setMemento($memento);
-
-/* 改变目标对象的状态 */
-$org->setState('close');
-$org->showState();
-
-/* 还原操作 */
-$org->restoreMemento($caretaker->getMemento());
-$org->showState();
-?>
-```
 
 ### 优缺点
 
@@ -1513,88 +589,6 @@ $org->showState();
 - 访问者模式多用在聚集类型多样的情况下。在普通的形式下必须判断每个元素是属于什么类型然后进行相应的操作，从而诞生出冗长的条件转移语句。而访问者模式则可以比较好的解决这个问题。对每个元素统一调用$element->accept($vistor)即可。
 - 访问者模式多用于被访问的类结构比较稳定的情况下，即不会随便添加子类。访问者模式允许被访问结构添加新的方法。
 
-### 类图
-
-![visitor pattern](http://7u2ho6.com1.z0.glb.clouddn.com/tech-visitor-pattern-uml.jpg)
-
-### 实例
-
-```php
-<?php
-interface Visitor { // 抽象访问者角色
-    public function visitConcreteElementA(ConcreteElementA $elementA);
-    public function visitConcreteElementB(concreteElementB $elementB);
-}
- 
-interface Element { // 抽象节点角色
-    public function accept(Visitor $visitor);
-}
- 
-class ConcreteVisitor1 implements Visitor { // 具体的访问者1
-    public function visitConcreteElementA(ConcreteElementA $elementA) {}
-    public function visitConcreteElementB(ConcreteElementB $elementB) {}
-}
-
-class ConcreteVisitor2 implements Visitor { // 具体的访问者2
-    public function visitConcreteElementA(ConcreteElementA $elementA) {}
-    public function visitConcreteElementB(ConcreteElementB $elementB) {}
-}
-
-class ConcreteElementA implements Element { // 具体元素A
-    private $_name;
-    public function __construct($name) { $this->_name = $name; } 
-    public function getName() { return $this->_name; }
-    public function accept(Visitor $visitor) { // 接受访问者调用它针对该元素的新方法
-        $visitor->visitConcreteElementA($this);
-    }
-}
-
-class ConcreteElementB implements Element { // 具体元素B
-    private $_name; 
-    public function __construct($name) { $this->_name = $name;}
-    public function getName() { return $this->_name; }
-    public function accept(Visitor $visitor) { // 接受访问者调用它针对该元素的新方法
-        $visitor->visitConcreteElementB($this);
-    }
-}
-
-class ObjectStructure { // 对象结构 即元素的集合
-    private $_collection; 
-    public function __construct() { $this->_collection = array(); } 
-    public function attach(Element $element) {
-        return array_push($this->_collection, $element);
-    }
-    public function detach(Element $element) {
-        $index = array_search($element, $this->_collection);
-        if ($index !== FALSE) {
-            unset($this->_collection[$index]);
-        }
-        return $index;
-    }
-    public function accept(Visitor $visitor) {
-        foreach ($this->_collection as $element) {
-            $element->accept($visitor);
-        }
-    }
-}
-
-// client
-$elementA = new ConcreteElementA("ElementA");
-$elementB = new ConcreteElementB("ElementB");
-$elementA2 = new ConcreteElementB("ElementA2");
-$visitor1 = new ConcreteVisitor1();
-$visitor2 = new ConcreteVisitor2();
-
-$os = new ObjectStructure();
-$os->attach($elementA);
-$os->attach($elementB);
-$os->attach($elementA2);
-$os->detach($elementA);
-$os->accept($visitor1);
-$os->accept($visitor2);
-?>
-```
-
 ### 优缺点
 
 #### 优点
@@ -1628,70 +622,6 @@ $os->accept($visitor2);
 - 一个对象的行为取决于它的状态，并且它必须在运行时刻根据状态改变它的行为
 - 一个操作中含有庞大的多分支的条件语句，且这些分支依赖于该对象的状态。这个状态通常用一个或多个枚举常量表示。通常，有多个操作包含这一相同的条件结构。State模式模式将每一个条件分支放入一个独立的类中。这使得你可以要所对象自身的情况将对象的状态作为一个对象，这一对象可以不依赖于其他对象而独立变化
 
-### 类图
-
-![state pattern](http://7u2ho6.com1.z0.glb.clouddn.com/tech-state-pattern-uml.jpg)
-
-### 实例
-
-```php
-<?php
-interface State { // 抽象状态角色
-    public function handle(Context $context); // 方法示例
-}
-
-class ConcreteStateA implements State { // 具体状态角色A
-    private static $_instance = null;
-    private function __construct() {}
-    public static function getInstance() { // 静态工厂方法，返还此类的唯一实例
-        if (is_null(self::$_instance)) {
-            self::$_instance = new ConcreteStateA();
-        }
-        return self::$_instance;
-    }
- 
-    public function handle(Context $context) {
-        $context->setState(ConcreteStateB::getInstance());
-    }
- 
-}
-
-class ConcreteStateB implements State { // 具体状态角色B
-    private static $_instance = null;
-    private function __construct() {}
-    public static function getInstance() {
-        if (is_null(self::$_instance)) {
-            self::$_instance = new ConcreteStateB();
-        }
-        return self::$_instance;
-    }
- 
-    public function handle(Context $context) {
-        $context->setState(ConcreteStateA::getInstance());
-    }
-}
-
-class Context { // 环境角色 
-    private $_state;
-    public function __construct() { // 默认为stateA
-        $this->_state = ConcreteStateA::getInstance();
-    }
-    public function setState(State $state) {
-        $this->_state = $state;
-    }
-    public function request() {
-        $this->_state->handle($this);
-    }
-}
-
-// client
-$context = new Context();
-$context->request();
-$context->request();
-$context->request();
-$context->request();
-?>
-```
 
 ### 优缺点
 
@@ -1726,35 +656,6 @@ $context->request();
 - 需要强调一系列相关的产品对象的设计以便进行联合使用时。
 - 提供一个产品类库，而只想显示它们的接口而不是实现时。
 
-### 类图
-![abstract pattern](http://7u2ho6.com1.z0.glb.clouddn.com/tech-abstract-pattern-uml.png)
-
-### 实例
-
-```php
-<?php
-class Button{}
-class Border{}
-class MacButton extends Button{}
-class WinButton extends Button{}
-class MacBorder extends Border{}
-class WinBorder extends Border{}
-
-interface AbstractFactory {
-    public function CreateButton();
-    public function CreateBorder();
-}
-
-class MacFactory implements AbstractFactory{
-    public function CreateButton(){ return new MacButton(); }
-    public function CreateBorder(){ return new MacBorder(); }
-}
-class WinFactory implements AbstractFactory{
-    public function CreateButton(){ return new WinButton(); }
-    public function CreateBorder(){ return new WinBorder(); }
-}
-?>
-```
 
 在这里例子中，工厂类实现了一组工厂方法。如果要增加新的功能，可以增加新的接口，让新的工厂类实现这个接口即可，而无需修改现有的工厂类。
 
@@ -1794,38 +695,7 @@ class WinFactory implements AbstractFactory{
 - 创建对象需要访问某些信息，而这些信息不应该包含在复合类中。
 - 创建对象的生命周期必须集中管理，以保证在整个程序中具有一致的行为。
 
-### 类图
-![factory method](http://7u2ho6.com1.z0.glb.clouddn.com/tech-factory-method-uml.png)
 
-### 实例
-
-#### 普通工厂方法
-下面的例子是工厂方法模式的应用，我们要创建两种风格的按钮，只需用不同的工厂方法获得相应按钮类即可。
-
-```php
-<?php
-
-class Button{/* ...*/}
-class WinButton extends Button{/* ...*/}
-class MacButton extends Button{/* ...*/}
-
-interface ButtonFactory{
-    public function createButton($type);
-}
-
-class MyButtonFactory implements ButtonFactory{
-    // 实现工厂方法
-    public function createButton($type){
-        switch($type){
-            case 'Mac':
-                return new MacButton();
-            case 'Win':
-                return new WinButton();
-        }
-    }
-}
-?>
-```
 
 上例中的`createButton()`方法即所谓的工厂方法，它所在的类仅仅是这个方法的载体。工厂方法的核心功能是创建类并返回，这个方法可以产生一个类，也可以产生多种类。这个方法本身的载体也并不局限，将其设置为静态方法也是可以的，这个根据自己的情况而定。
 
@@ -1864,33 +734,7 @@ class MyButtonFactory implements ButtonFactory{
 - 各子类中公共的行为应被提取出来并集中到一个公共父类中以避免代码重复。
 - 控制子类扩展。
 
-### 类图
 
-![template method pattern](http://7u2ho6.com1.z0.glb.clouddn.com/tech-template-method-pattern-uml.jpg)
-
-### 实例
-
-```php
-<?php
-abstract class AbstractClass { // 抽象模板角色
-    public function templateMethod() { // 模板方法 调用基本方法组装顶层逻辑
-        $this->primitiveOperation1();
-        $this->primitiveOperation2();
-    }
-    abstract protected function primitiveOperation1(); // 基本方法
-    abstract protected function primitiveOperation2();
-}
-
-class ConcreteClass extends AbstractClass { // 具体模板角色
-    protected function primitiveOperation1() {}
-    protected function primitiveOperation2(){}
- 
-}
- 
-$class = new ConcreteClass();
-$class->templateMethod();
-?>
-```
 
 ### 参考
 1. [Wikipedia: Template method pattern](http://en.wikipedia.org/wiki/Template_method_pattern)
@@ -1906,43 +750,6 @@ $class->templateMethod();
 - 具体责任(Concrete Responsibility)角色：以抽象责任接口实现的具体责任
 - 责任链(Chain of responsibility)角色：设定责任的调用规则
 
-### 实例
-
-```php
-<?php
-abstract class Responsibility { // 抽象责任角色
-    protected $next; // 下一个责任角色
- 
-    public function setNext(Responsibility $l) {
-        $this->next = $l;
-        return $this;
-    }
-    abstract public function operate(); // 操作方法
-}
- 
-class ResponsibilityA extends Responsibility {
-    public function __construct() {}
-    public function operate(){
-        if (false == is_null($this->next)) {
-            $this->next->operate();
-        }
-    };
-}
-
-class ResponsibilityB extends Responsibility {
-    public function __construct() {}
-    public function operate(){
-        if (false == is_null($this->next)) {
-            $this->next->operate();
-        }
-    };
-}
- 
-$res_a = new ResponsibilityA();
-$res_b = new ResponsibilityB();
-$res_a->setNext($res_b);
-?>
-```
 
 ### 参考
 1. [Wikipedia: Chain-of-responsibility pattern](http://en.wikipedia.org/wiki/Chain_of_responsibility_pattern)
