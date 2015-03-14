@@ -3,8 +3,7 @@ layout: post
 title: KMP算法详解
 category: 技术
 tags: KMP
-keywords: KMP
-description:转自http://www.matrix67.com/blog/archives/115
+description: 转自(http://www.matrix67.com/blog/archives/115)
 ---
 
 
