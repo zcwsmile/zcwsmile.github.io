@@ -7,6 +7,9 @@ keywords: Python
 description: 
 ---
 
+##推荐一个Python快速教程 （作者：Vamei 出处：http://www.cnblogs.com/vamei ）    
+
+
 ## 常用代码
 
 ### 遍历对象
