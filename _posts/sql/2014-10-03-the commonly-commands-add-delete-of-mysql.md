@@ -1,7 +1,7 @@
 ---
 layout: post
 title: MYSQL的常用命令和增删改查
-category: 技术
+category: sql
 tags: [Pattern]
 keywords: MSSQL
 ---

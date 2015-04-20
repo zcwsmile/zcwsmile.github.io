@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Git 常用资源
-category: other_tech
+category: other
 tags: Git
 keywords: Git
 description: 

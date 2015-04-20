@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 了解GitHub工作流
-category: other_tech
+category: other
 tags: Git
 keywords: Git,Workflow,工作流,GitHub 
 description: 

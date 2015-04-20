@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Mac 常用资源
-category: other_tech
+category: other
 tags: Mac
 keywords: Mac
 description: 

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 用MySQL connector/C++链接MySQL数据库
-category: 技术
+category: sql
 tags: MySQL
 keywords: MySQL
 description:

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Interviews
-category: clinux
+category: c++_linux
 tags: interviews
 keywords: interview
 description: 2014

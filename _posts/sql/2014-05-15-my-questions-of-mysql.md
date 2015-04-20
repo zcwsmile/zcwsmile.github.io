@@ -1,7 +1,7 @@
 ---
 layout: post
 title: MSSQL2008 R2使用中问题
-category: 技术
+category: sql
 tags: [Pattern]
 keywords: MSSQL
 ---

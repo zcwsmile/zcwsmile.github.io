@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Linux随手记
-category: clinux
+category: c++_linux
 tags: Linux
 description: 随手记Linux小问题
 ---

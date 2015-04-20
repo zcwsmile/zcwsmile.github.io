@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 在Github上搭建Jekyll博客和创建主题
-category: other_tech
+category: other
 tags: Jekyll
 keywords: Jekyll,Github
 description: 

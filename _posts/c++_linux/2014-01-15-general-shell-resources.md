@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Shell 常用资源
-category: clinux
+category: c++_linux
 tags: Shell
 keywords: Shell
 description: 
