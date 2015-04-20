@@ -1,7 +1,7 @@
 ---
 layout: post
 title: 程序员指南和学习C++——实践者的方法（转整收藏）
-category: c++_linux
+category: c_linux
 tags: C, Thinkding
 keywords: Thinkding,c
 description:

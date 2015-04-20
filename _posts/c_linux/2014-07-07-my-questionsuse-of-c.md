@@ -1,7 +1,7 @@
 ---
 layout: post
 title: C++ 随手
-category: c++_linux
+category: c_linux
 tags: [Pattern]
 keywords: C++
 ---

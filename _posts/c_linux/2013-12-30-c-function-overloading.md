@@ -1,7 +1,7 @@
 ---
 layout: post
 title: C++函数重载实现原理浅析
-category: c++_linux
+category: c_linux
 tags: [Pattern]
 keywords: C 函数重载
 ---

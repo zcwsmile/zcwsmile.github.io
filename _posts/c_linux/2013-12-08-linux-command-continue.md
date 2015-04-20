@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Linux下多个命令连续执行方法
-category: c++_linux
+category: c_linux
 tags: Linux
 keywords: Linux,连续,命令
 description: 
