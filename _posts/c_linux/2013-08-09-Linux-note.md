@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Linux随手记
+title: Linux 随手
 category: c_linux
 tags: Linux
 description: 随手记Linux小问题

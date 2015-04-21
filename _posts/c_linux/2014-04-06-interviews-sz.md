@@ -7,15 +7,15 @@ keywords: interview
 description: 2014
 ---
 
-1、map 内有为结构体的键值，怎么使用
-2、获取共享内存的函数：shmget、shmat、shmdt、shmctl
-3、strstr(*str1, *str2)      ：：实现从字符串str1中查找是否有字符串str2，如果有，从str1中的str2位置起，返回str1中str2起始位置的指针，如果没有，返回null。
-4、函数库调用和系统调用区别:
+### 1、map 内有为结构体的键值，怎么使用
+### 2、获取共享内存的函数：shmget、shmat、shmdt、shmctl
+### 3、strstr(*str1, *str2)      ：：实现从字符串str1中查找是否有字符串str2，如果有，从str1中的str2位置起，返回str1中str2起始位置的指针，如果没有，返回null。
+### 4、函数库调用和系统调用区别:
 函数库调用是语言或应用程序的一部分，而系统调用是操作系统的一部分。
 用户应用程序访问并使用内核所提供的各种服务的途径即是系统调用。在内核和用户应用程序相交界的地方，内核提供了一组系统调用接口，通过这组接口，应用程序可以访问系统硬件和各种操作系统资源。 
-1.系统调用是为了方便应用使用操作系统的接口，而库函数是为了方便人们编写应用程序而引出的，比如你自己编写一个函数其实也可以说就是一个库函数。
-2.系统调用可以理解为内核提供给我们在用户态用的接口函数，可以认为是某种内核的库函数。
-3.read就是系统调用,而fread就是C标准库函数.
+### 1.系统调用是为了方便应用使用操作系统的接口，而库函数是为了方便人们编写应用程序而引出的，比如你自己编写一个函数其实也可以说就是一个库函数。
+### 2.系统调用可以理解为内核提供给我们在用户态用的接口函数，可以认为是某种内核的库函数。
+### 3.read就是系统调用,而fread就是C标准库函数.
 ※函数库调用 VS系统调用
 | 函数库调用        | 系统调用 |
 | --------  |  -----:|
@@ -39,12 +39,12 @@ printf是标准输出流的输出函数，用来向屏幕这样的标准输出�
 printf是有缓冲的输出，fprintf没有缓冲
 fprintf()传送输出到一个流中的函数
 
-5、new和malloc的区别：：
+### 5、new和malloc的区别：：
 1 malloc与free是C++/C语言的标准库函数，new/delete是C++的运算符。它们都可用于申请动态内存和释放内存。
 2 对于非内部数据类型的对象而言，光用maloc/free无法满足动态对象的要求。对象在创建的同时要自动执行构造函数，对象在消亡之前要自动执行析构函数。由于malloc/free是库函数而不是运算符，不在编译器控制权限之内，不能够把执行构造函数和析构函数的任务强加于malloc/free 3 3 因此C++语言需要一个能完成动态内存分配和初始化工作的运算符new，以一个能完成清理与释放内存工作的运算符delete。注意new/delete不是库函数。
 4 C++程序经常要调用C函数，而C程序只能用malloc/free管理动态内存。
 5 new可以认为是malloc加构造函数的执行。new出来的指针是直接带类型信息的。而malloc返回的都是void指针。
-6、考察 模板！~
+### 6、考察 模板！~
 7、C++预处理指令
     #includ
     #define
@@ -62,7 +62,7 @@ fprintf()传送输出到一个流中的函数
 8、逻辑运算符《关系运算符《算术运算符  
 例如：9>3+4&&7
 先算3+4  再判断9是不是大于7，再&&
-9、为什么基类的析构函数是虚函数？
+### 9、为什么基类的析构函数是虚函数？
 在实现多态时，当用基类操作派生类，在析构时防止只析构基类而不析构派生类的状况发生。
 当基类指针指向new生成的派生类对象时，delete基类指针时派生类部分没有释放掉而造成释放不彻底现象，需要虚析构函数。
 10、volatile是一个类型修饰符。理解volatile~!
@@ -148,19 +148,18 @@ long型的0x40写完整为:0x 00 00 00 40，共四个字节，调用htonl后四�
 5、模板
 6、
 
-
-#### 与struct相关的宏定义 ---今Tencent笔试用到的
+### 与struct相关的宏定义 ---今Tencent笔试用到的
 获取成员变量的偏移以及通过成员变量的地址获取struct的起始地址
 获取成员变量的偏移以及通过成员变量的地址获取struct的起始地址
 1. 获取成员变量的偏移。
  #define offset_of(type, field) ( (unsigned int)&(((type *)(0))->field) ) 
 简单解释一下这个宏：
 
-    //如果我们定义一个struct:
-    typedef struct{
-      int a;
-      int b;
-    } A;
+	//如果我们定义一个struct:
+	typedef struct{
+	  int a;
+	  int b;
+	} A;
 
 那么offset_of(A, b)就会输出b相对于起始地址的偏移。
 & -- 这是取地址符号，表示获取当前变量的地址。
@@ -171,34 +170,140 @@ long型的0x40写完整为:0x 00 00 00 40，共四个字节，调用htonl后四�
 `#define container_of(ptr, type, field) (type *)((char *)ptr - offset_of(type, field))`  
 我们只需要把该成员变量的地址减去你相对于首地址的偏移，不就是该结构体的首地址了么？
 结出一个完整的实例：
-```
-// testConsole.cpp : Defines the entry point for the console application.  
-//  
-#include "stdafx.h"  
-#include <time.h>  
-#include <stdio.h>  
-#include <stdlib.h>  
-  
-#define offset_of(type, field) ( (unsigned int)&(((type *)(0))->field) )  
-#define container_of(ptr, type, field) (type *)((char *)ptr - offset_of(type, field)) 
-typedef struct{  
-    int     a;  
-    int     b;  
-    char    c;  
-    int     d;  
-}package_t;  
-  
-int main()  
-{  
-    package_t pkg;  
-    int *p;  
-  
-    p = (int *)&pkg.d;  
-    printf("offset of 'd' is %d.\n", offset_of(package_t, d));  
-    printf("The addr of pkg = 0x%x.\n", &pkg);  
-    printf("The addr of d's container = 0x%x.\n", container_of(p, package_t, d));  
-    return 0;  
-}  
-```
 
+	// testConsole.cpp : Defines the entry point for the console application.  
+	
+	#include "stdafx.h"  
+	#include <time.h>  
+	#include <stdio.h>  
+	#include <stdlib.h>  
+	  
+	#define offset_of(type, field) ( (unsigned int)&(((type *)(0))->field) )  
+	#define container_of(ptr, type, field) (type *)((char *)ptr - offset_of(type, field)) 
+	typedef struct{  
+	    int     a;  
+	    int     b;  
+	    char    c;  
+	    int     d;  
+	}package_t;  
+	  
+	int main()  
+	{  
+	    package_t pkg;  
+	    int *p;  
+	  
+	    p = (int *)&pkg.d;  
+	    printf("offset of 'd' is %d.\n", offset_of(package_t, d));  
+	    printf("The addr of pkg = 0x%x.\n", &pkg);  
+	    printf("The addr of d's container = 0x%x.\n", container_of(p, package_t, d));  
+	    return 0;  
+	}  
+
+
+## String类的实现（常考，注意细节）
+
+	#include<iostream>
+	#include<iomanip>
+	using namespace std;
+	
+	class String{
+	    friend ostream& operator<< (ostream&,String&);//重载<<运算符
+		friend istream& operator>> (istream&,String&);//重载>>运算符
+	public:
+	    String(const char* str=NULL);                //赋值构造兼默认构造函数(char)
+	    String(const String &other);                 //赋值构造函数(String)
+	    String& operator=(const String& other);       //operator=
+	    String operator+(const String &other)const;  //operator+
+	    bool operator==(const String&);              //operator==
+	    char& operator[](unsigned int);              //operator[]
+	    size_t size(){return strlen(m_data);};
+	    ~String(void) {delete[] m_data;}
+	private:
+	    char *m_data; // 用于保存字符串
+	};
+	
+	inline String::String(const char* str)   
+	{
+		if(!str)m_data=0;      //声明为inline函数，则该函数在程序中被执行时是语句直接替换，而不是被调用
+		else {
+			m_data=new char[strlen(str)+1];
+			strcpy(m_data,str);
+		}
+	}
+	
+	inline String::String(const String &other)
+	{
+		if(!other.m_data)m_data=0;//在类的成员函数内可以访问同种对象的私有成员（同种类则是友元关系）
+		else 
+		{
+			m_data=new char[strlen(other.m_data)+1];
+			strcpy(m_data,other.m_data);
+		}
+	}
+	
+	inline String& String::operator=(const String& other)
+	{
+	    if (this!=&other)
+	    {
+	        delete[] m_data;
+	        if(!other.m_data) m_data=0;
+	        else
+	        {
+	            m_data = new char[strlen(other.m_data)+1];
+	            strcpy(m_data,other.m_data);
+	        }
+	    }
+	    return *this;
+	}
+	inline String String::operator+(const String &other)const
+	{
+	    String newString;
+	    if(!other.m_data)
+	        newString = *this;
+	    else if(!m_data)
+	        newString = other;
+	    else
+	    {
+	        newString.m_data = new char[strlen(m_data)+strlen(other.m_data)+1];
+	        strcpy(newString.m_data,m_data);
+	        strcat(newString.m_data,other.m_data);
+	    }
+	    return newString;
+	}
+	
+	inline bool String::operator==(const String &s)    
+	{
+	    if ( strlen(s.m_data) != strlen(m_data) )
+	        return false;
+	    return strcmp(m_data,s.m_data)?false:true;
+	}
+	
+	inline char& String::operator[](unsigned int e)
+	{
+	    if (e>=0&&e<=strlen(m_data))
+	        return m_data[e];
+	}
+	
+	ostream& operator<<(ostream& os,String& str)
+	{
+	    os << str.m_data;
+	    return os;
+	}
+	
+	istream &operator>>( istream &input, String &s )
+	{
+	   char temp[ 255 ]; //用于存储输入流
+	   input>>setw(255)>>temp;
+	   s = temp; //使用赋值运算符
+	   return input; //使用return可以支持连续使用>>运算符
+	}
+	
+	int main()
+	{
+	    String str1="Aha!";
+	    String str2="My friend";
+	    String str3 = str1+str2;
+	    cout<<str3<<"/n"<<str3.size()<<endl;
+		return 0;
+	}
 
