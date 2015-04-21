@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 在Github上搭建Jekyll博客和创建主题
+title: 在Github上搭建Jekyll博客和创建主题（转自http://yansu.org/）
 category: other
 tags: Jekyll
 keywords: Jekyll,Github
