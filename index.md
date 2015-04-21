@@ -7,13 +7,10 @@ title: Welcome
 
 > 博客--一个由自己肆意的空间
 
-<font style="color:green" size="5" >
-
 ### Hi, thank you for visiting this blog. My name is Kiveen, a C++ developer now in Shenzhen.China. This is my technology blog, then I maybe share some ideas of live, the observation of society and so on.
 
 ### If you have any question, suggestion or correction, pls feel free to leave a comment or contact me with <font style="color:blue;" >zcwsmile@gmail.com</font>, and it will be appreciated soon.THX
 
-</font>
 
 （部署在[Github](https://github.com/zcwsmile/zcwsmile.github.io)）
 
