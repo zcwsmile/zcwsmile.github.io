@@ -9,20 +9,15 @@ title: Welcome
 
 ### Hi, thank you for visiting this blog. My name is Kiveen, a C++ developer now in Shenzhen.China. This is my technology blog, then I maybe share some ideas of live, the observation of society and so on.
 
-### If you have any question, suggestion or correction, pls feel free to leave a comment or contact me with <font style="color:blue;" >zcwsmile@gmail.com</font>, and it will be appreciated soon.THX
-
-
-
-		  感谢[SuYan](http://yansu.org/)，因为我这个博客什么的都来自他,
-		  谢谢。
-
+### If you have any question, suggestion or correction, pls feel free to leave a comment or contact me with <font style="color:blue;" >zcwsmile@gmail.com</font>, and it will be appreciated soon. 
+Finally, thanks [SuYan](http://yansu.org)，because this blog is from him,THX
 
 
 
 
 ***
 
-<table width="900" border="10" cellspacing="40" cellpadding="20">
+<table width="900" border="10" cellspacing="30" cellpadding="20">
 <tr>
 <td width="500"><font style="color:grey" size="4" >
 	致橡树<br>
