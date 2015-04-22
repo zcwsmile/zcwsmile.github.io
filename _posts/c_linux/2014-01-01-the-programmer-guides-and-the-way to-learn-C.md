@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 程序员指南和学习C++——实践者的方法（转整收藏）
+title: 程序员和学习C++——实践者的方法（转整）
 category: c_linux
 tags: C, Thinkding
 keywords: Thinkding,c
@@ -8,7 +8,7 @@ description:
 ---
 
 ## 程序员指南（引用汇总）
-1、写给新手程序员的一封信(http://www.williamlong.info/archives/2700.html)
+1、[写给新手程序员的一封信](http://www.williamlong.info/archives/2700.html)
     --选择一门好的编程语言，一门你自认为可以用它快速地做出一些有用东西的语言。
     --选择一个好的编辑器。SublimeText 2;Emacs;Vim
     --选择一个你可以从中学到东西的操作系统
@@ -17,7 +17,7 @@ description:
     --培养你的礼仪，记得问问题的时候要礼貌
     --结交朋友，技术书籍只能教你解决常见的问题（他们说：书是死的）
     --参加开源项目而且编写的代码会成为与他人有效沟通的桥梁
-2、编程修养（http://blog.csdn.net/haoel/article/details/2872）
+2、[编程修养](http://blog.csdn.net/haoel/article/details/2872)
 
 我认为好的程序员应该有以下几方面的素质：
   1、有专研精神，勤学善问、举一反三。
@@ -30,7 +30,7 @@ description:
 “细微之处见真功”，真正能体现一个程序的功底恰恰在这些细微之处。
 这就是程序员的——编程修养。我总结了在用C/C++语言（主要是C语言）进行程序写作上的三十二个“修养”，通过这些，你可以写出质量高的程序，同时也会让看你程序的人渍渍称道，那些看过你程序的人一定会说：“这个人的编程修养不错”。
 
-3、程序员技术练级攻略（http://coolshell.cn/articles/4990.html）：
+3、[程序员技术练级攻略](http://coolshell.cn/articles/4990.html)：
     建议： 不要乱买书，乱追新技术，基础的东西经过积累而且还会在未来至少10年通用。 回顾历史，看看时间线上技术的发展，你才能明白明天会是什么样。 
 一定要动手，例子不管多么简单，建议至少自己手敲一遍看看是否理解了里头的细枝末节。 一定要学会思考，思考为什么要这样，而不是那样。还要举一反三地思考。
 个人认为以后的趋势是前端是Web+移动，后端是Linux+开源
@@ -51,8 +51,8 @@ description:
 
 
 ## 学习C++：
-实践者的方法（Beta1） By 刘未鹏(pongba) 
-C++的罗浮宫(http://blog.csdn.net/pongba)
+[实践者的方法](http://blog.csdn.net/pongba/article/details/1930150) （Beta1） By 刘未鹏(pongba)
+[C++的罗浮宫](http://blog.csdn.net/pongba)
 ### 你应当如何学习C++ 
 大多数原先的反对者能从中找出反对的理由，于是更加反对；大多数原先的赞同者也能从中找到赞同的理由，于是更加赞同；而剩下来的原先没有明确意见的，看双方各有各的道理，可能还是没有头绪。啰嗦一大通 
 所以，如果你能够理性的思考我们将要讨论的问题，避免自我服务偏见（就当你从来没有花时间在C++上一样）。那么我们便可以开始讨论真正的问题了。几乎每个学习C++的都知道C++的核心问题是其复杂性； 
@@ -88,5 +88,5 @@ C++的复杂性分类，一是分为非本质复杂性和本质复杂性；其�
 As Always，欢迎加入我们的讨论组——TopLanguage（http://groups.google.com/group/pongba），自从8月份建立以来，我们已经吸引了三百位同学，二千五百多条讨论，想知道我们讨论些什么，参见TopLanguage讨论精选[一]，精选[二]，精选[三]，加入前请看这里。
 
 
-##  IT人的自我导向型学习：学习的4个层次 (http://www.cnblogs.com/zcwsmile/p/4027825.html)
+##  [IT人的自我导向型学习：学习的4个层次 ](http://www.cnblogs.com/zcwsmile/p/4027825.html)
 
