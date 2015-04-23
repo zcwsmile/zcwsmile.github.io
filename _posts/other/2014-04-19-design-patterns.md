@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 设计模式初解
+title: 设计模式初解和C++实现
 category: other
 tags: [Pattern]
 keywords: 设计模式,Pattern,建造者模式,单例模式,适配器模式,桥接模式,组合模式,装饰器模式,门面模式,享元模式,观察者模式,备忘录模式,中介者模式,迭代器模式,解释器模式,策略模式,命令模式,代理模式,原型模式,状态模式,访问者模式,模板方法模式,责任链模式,抽象工厂模式,工厂模式
@@ -20,45 +20,44 @@ keywords: 设计模式,Pattern,建造者模式,单例模式,适配器模式,桥�
 
 如果你对设计模式完全没有感觉，那么去好好写一个类库，或者一个简单的MVC框架，这个过程会让你感觉到自己缺失的部分。
 
-### 分类
-在《设计模式：可复用面向对象软件的基础》(Design Patterns: Elements of Reusable Object-Oriented Software) 这本书中，作者把设计模式分了三大类：
+### 在《设计模式：可复用面向对象软件的基础》(Design Patterns: Elements of Reusable Object-Oriented Software) 这本书中，作者把设计模式分了三大类：
 
-#### 创建型模式（Creational patterns）
+### 一、创建型模式（Creational patterns）
 [创建型模式](http://en.wikipedia.org/wiki/Creational_pattern)是为了解决创建对象时候遇到的问题。因为基本的对象创建方式可能会导致设计上的问题，或增加设计的复杂度。创建型模式有两个主导思想：一是将系统使用的具体类封装起来，二是隐藏这些具体类的实例创建和结合方式。
 
 最常见的五种创建型模式如下：
 
-- 工厂方法模式（Factory method pattern)
-- 抽象工厂模式（Abstract factory pattern)
-- 单例模式（Singleton pattern）
-- 建造者模式（Builder pattern）
-- 原型模式（Prototype pattern）
+- 1工厂方法模式（Factory method pattern)
+- 2抽象工厂模式（Abstract factory pattern)
+- 3单例模式（Singleton pattern）
+- 4建造者模式（Builder pattern）
+- 5原型模式（Prototype pattern）
 
-#### 结构型模式（Structural pattern）
+### 二、结构型模式（Structural pattern）
 [结构型模式](http://en.wikipedia.org/wiki/Structural_pattern)是通过定义一个简单的方法来实现和了解实体间关系，从而简化设计。
 
-- 适配器模式（Adapter pattern）
-- 桥接模式（Bridge pattern）
-- 合成模式（Composite pattern）
-- 装饰器模式（Decorator pattern）
-- 门面模式（Facade pattern）
-- 代理模式（Proxy pattern）
-- 享元模式（Flyweight Pattern）
+- 6适配器模式（Adapter pattern）
+- 7桥接模式（Bridge pattern）
+- 8合成模式（Composite pattern）
+- 9装饰器模式（Decorator pattern）
+- 10门面模式（Facade pattern）
+- 11代理模式（Proxy pattern）
+- 12享元模式（Flyweight Pattern）
 
-#### 行为型模式（Behavioral pattern）
+### 三、行为型模式（Behavioral pattern）
 [行为型模式](http://en.wikipedia.org/wiki/Behavioral_pattern)用来识别对象之间的常用交流模式并加以实现，使得交流变得更加灵活。
 
-- 策略模式（Strategy pattern）
-- 模板方法模式（Template method pattern）
-- 观察者模式（Observer pattern）
-- 迭代器模式（Iterator pattern）
-- 责任链模式（Chain of responsibility pattern）
-- 命令模式（Command pattern）
-- 备忘录模式（Memento pattern）
-- 状态模式（State pattern）
-- 访问者模式（Visitor pattern）
-- 中介者模式（Mediator pattern）
-- 解释器模式（Interpreter pattern）
+- 13策略模式（Strategy pattern）
+- 14模板方法模式（Template method pattern）
+- 15观察者模式（Observer pattern）
+- 16迭代器模式（Iterator pattern）
+- 17责任链模式（Chain of responsibility pattern）
+- 18命令模式（Command pattern）
+- 19备忘录模式（Memento pattern）
+- 20状态模式（State pattern）
+- 21访问者模式（Visitor pattern）
+- 22中介者模式（Mediator pattern）
+- 23解释器模式（Interpreter pattern）
 
 ### 关系
 这里有一张各个模式关系图，可以在了解各个模式以后梳理一下
@@ -69,36 +68,199 @@ keywords: 设计模式,Pattern,建造者模式,单例模式,适配器模式,桥�
 1. [Wikipedia: Software design pattern](http://en.wikipedia.org/wiki/Software_design_pattern)
 2. [百度百科：设计模式](http://baike.baidu.com/view/66964.htm)
 
+## 1.工厂方法模式（Factory method pattern）
+工厂方法模式是一种创建型模式，这种模式使用“工厂”概念来完成对象的创建而不用具体说明这个对象。
 
-## 建造者模式（Builder pattern）
-建造者模式是一种创建型模式，它可以让一个产品的内部表象和和产品的生产过程分离开，从而可以生成具有不同内部表象的产品。
+在面向对象程序设计中，工厂通常是一个用来创建其他对象的对象。工厂是构造方法的抽象，用来实现不同的分配方案。
 
-### Builder模式中主要角色
+### 主要角色
+- 抽象产品(Product)角色：具体产品对象共有的父类或者接口。
+- 具体产品(Concrete Product)角色：实现抽象产品角色所定义的接口
+- 抽象工厂(Creator)角色：它声明了工厂方法，该方法返回Product对象
+- 具体工厂(Concrete Creator)：实现抽象工厂接口
 
-- 抽象建造者(Builder)角色：定义抽象接口，规范产品各个部分的建造，必须包括建造方法和返回方法。
-- 具体建造者(Concrete)角色：实现抽象建造者接口。应用程序最终根据此角色中实现的业务逻辑创造产品。
-- 导演者(Director)角色：调用具体的建造者角色创造产品。
-- 产品(Product)角色：在导演者的指导下所创建的复杂对象。
+工厂方法模式就像我们去麦当劳买汉堡，我们只要找到服务员，让他帮我们拿来汉堡即可。其中具体某个服务员就像具体工厂，他继承了服务员应有的服务。汉堡在到手以前属于抽象产品，而我们拿到的汉堡就属于具体产品。
 
 ### 适用性
+- 创建对象需要大量重复的代码（例如创建一个MySQL操作类，需要配置很多选项，这些都可以在工厂方法中进行）。
+- 创建对象需要访问某些信息，而这些信息不应该包含在复合类中。
+- 创建对象的生命周期必须集中管理，以保证在整个程序中具有一致的行为。
 
-- 当创建复杂对象的算法应该独立于该对象的组成部分以及它们的装配方式时。
-- 当构造过程必须允许被构造的对象有不同的表示时。
-
-### 优缺点
+工厂方法的核心功能是创建类并返回，这个方法可以产生一个类，也可以产生多种类。这个方法本身的载体也并不局限，将其设置为静态方法也是可以的，这个根据自己的情况而定。
 
 #### 优点
-建造者模式可以很好的将一个对象的实现与相关的“业务”逻辑分离开来，从而可以在不改变事件逻辑的前提下，使增加(或改变)实现变得非常容易。
+工厂方法模式可以允许系统在不修改工厂角色的情况下引进新产品。
 
 #### 缺点
-建造者接口的修改会导致所有执行类的修改。
+- 重构已经存在的类会破坏客户端代码。
+- 如果工厂方法所在类的构造函数为私有，则工厂方法无法继续扩展，或者必须实现工厂方法所在类的全部依赖方法。
 
 ### 参考
-1. [Wikipedia: Bulider pattern](http://en.wikipedia.org/wiki/Builder_pattern)
-2. [Wikipedia: 生成器模式](http://zh.wikipedia.org/wiki/%E7%94%9F%E6%88%90%E5%99%A8%E6%A8%A1%E5%BC%8F)
+1. [Wikipedia: Factory method pattern](http://en.wikipedia.org/wiki/Factory_method_pattern)
+2. [Wikipedia: 工厂方法模式](http://zh.wikipedia.org/wiki/%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F)
 
+**简单工厂模式**
 
-## 单例模式（Singleton pattern）
+```
+enum CTYPE { COREA, COREB };
+class SingleCore
+{
+public:
+	virtual void Show() = 0;
+};
+class SingleCoreA : public SingleCore
+{
+public:
+	void Show() { cout << "SingleCore A" << endl; }
+};
+class SingleCoreB : public SingleCore
+{
+public:
+	void Show() { cout << "SingleCore B" << endl; }
+};
+//唯一的工厂，可以生产两种型号的处理器核，在内部判断
+class Factory
+{
+public:
+	SingleCore* CreateSingleCore(enum CTYPE ctype)
+	{
+		if (ctype == COREA) //工厂内部判断
+			return new SingleCoreA();
+		else if (ctype == COREB)
+			return new SingleCoreB();
+		else
+			return NULL;
+	}
+};
+```
+
+**工厂方法模式**
+
+```
+class SingleCore
+{
+public:
+	virtual void Show() = 0;
+};
+class SingleCoreA : public SingleCore
+{
+public:
+	void Show() { cout << "SingleCore A" << endl; }
+};
+class SingleCoreB : public SingleCore
+{
+public:
+	void Show() { cout << "SingleCore B" << endl; }
+};
+class Factory
+{
+public:
+	virtual SingleCore* CreateSingleCore() = 0;
+};
+//生产A核的工厂  
+class FactoryA : public Factory
+{
+public:
+	SingleCoreA* CreateSingleCore() { return new SingleCoreA; }
+};
+//生产B核的工厂  
+class FactoryB : public Factory
+{
+public:
+	SingleCoreB* CreateSingleCore() { return new SingleCoreB; }
+};
+```
+
+**抽象工厂模式**
+
+```
+class SingleCore
+{
+public:
+	virtual void Show() = 0;
+};
+class SingleCoreA : public SingleCore
+{
+public:
+	void Show() { cout << "Single Core A" << endl; }
+};
+class SingleCoreB :public SingleCore
+{
+public:
+	void Show() { cout << "Single Core B" << endl; }
+};
+//多核  
+class MultiCore
+{
+public:
+	virtual void Show() = 0;
+};
+class MultiCoreA : public MultiCore
+{
+public:
+	void Show() { cout << "Multi Core A" << endl; }
+
+};
+class MultiCoreB : public MultiCore
+{
+public:
+	void Show() { cout << "Multi Core B" << endl; }
+};
+//工厂  
+class CoreFactory
+{
+public:
+	virtual SingleCore* CreateSingleCore() = 0;
+	virtual MultiCore* CreateMultiCore() = 0;
+};
+//工厂A，专门用来生产A型号的处理器  
+class FactoryA :public CoreFactory
+{
+public:
+	SingleCore* CreateSingleCore() { return new SingleCoreA(); }
+	MultiCore* CreateMultiCore() { return new MultiCoreA(); }
+};
+//工厂B，专门用来生产B型号的处理器  
+class FactoryB : public CoreFactory
+{
+public:
+	SingleCore* CreateSingleCore() { return new SingleCoreB(); }
+	MultiCore* CreateMultiCore() { return new MultiCoreB(); }
+};
+```
+
+## 2.抽象工厂模式（Abstract Factory pattern）
+抽象工厂模式是一种创建型模式，它提供了一种方式，可以将一组具有同一主题的单独的工厂封装起来。它的实质是“提供接口，创建一系列相关或独立的对象，而不指定这些对象的具体类”。
+抽象工厂模式提供一个创建一系统相关或相互依赖对象的接口，而无需指定它们具体的类。
+
+### 抽象工厂模式中主要角色
+- 抽象工厂(Abstract Factory)角色：它声明创建抽象产品对象的接口
+- 具体工厂(Concrete Factory)角色：实现创建产品对象的操作
+- 抽象产品(Abstract Product)角色：声明一类产品的接口
+- 具体产品(Concrete Product)角色：实现抽象产品角色所定义的接口
+这个和工厂方法模式类似，我们不再只要一个汉堡，可能是4个汉堡2个鸡翅，我们还是对服务员说，服务员属于具体工厂，抽象产品就是麦当劳可卖的食物，具体产品是我们跟服务员要的食物。
+
+### 适用性
+- 一个系统要独立于它的产品的创建、组合和表示时。
+- 一个系统要由多个产品系列中的一个来配置时。
+- 需要强调一系列相关的产品对象的设计以便进行联合使用时。
+- 提供一个产品类库，而只想显示它们的接口而不是实现时。
+
+在这里例子中，工厂类实现了一组工厂方法。如果要增加新的功能，可以增加新的接口，让新的工厂类实现这个接口即可，而无需修改现有的工厂类。
+
+#### 优点
+- 分离了具体的类
+- 使增加或替换产品族变得容易
+- 有利于产品的一致性
+
+#### 缺点
+难以支持新种类的产品。这是因为AbstractFactory接口确定了可以被创建的产品集合。支持新各类的产品就需要扩展访工厂接口，从而导致AbstractFactory类及其所有子类的改变。
+
+### 参考
+1. [Wikipedia: 抽象工厂](http://zh.wikipedia.org/wiki/%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F)
+2. [Wikipedia: Abstract factory pattern](http://en.wikipedia.org/wiki/Abstract_factory_pattern)
+
+## 3.单例模式（Singleton pattern）
 抽象工厂模式是一种创建型模式，在应用这个模式时，单例对象的类必须保证只有一个实例存在。
 
 实现单例模式的思路是：一个类能返回对象一个引用(永远是同一个)和一个获得该实例的方法（必须是静态方法，通常使用getInstance这个名称）；当我们调用这个方法时，如果类持有的引用不为空就返回这个引用，如果类保持的引用为空就创建该类的实例并将实例的引用赋予该类保持的引用；同时我们还将该类的构造函数定义为私有方法，这样其他处的代码就无法通过调用该类的构造函数来实例化该类的对象，只有通过该类提供的静态方法来得到该类的唯一实例。
@@ -131,7 +293,70 @@ Singleton定义一个getInstance操作，允许客户访问它唯一的实例。
 1. [Wikipedia: 单例模式](http://zh.wikipedia.org/wiki/%E5%8D%95%E4%BE%8B%E6%A8%A1%E5%BC%8F)
 2. [Wikipedia: Singleton pattern](http://en.wikipedia.org/wiki/Singleton_pattern)
 
-## 适配器模式（Adapter pattern）
+
+
+## 4.建造者模式（Builder pattern）
+建造者模式是一种创建型模式，它可以让一个产品的内部表象和和产品的生产过程分离开，从而可以生成具有不同内部表象的产品。
+
+### Builder模式中主要角色
+
+- 抽象建造者(Builder)角色：定义抽象接口，规范产品各个部分的建造，必须包括建造方法和返回方法。
+- 具体建造者(Concrete)角色：实现抽象建造者接口。应用程序最终根据此角色中实现的业务逻辑创造产品。
+- 导演者(Director)角色：调用具体的建造者角色创造产品。
+- 产品(Product)角色：在导演者的指导下所创建的复杂对象。
+
+### 适用性
+
+- 当创建复杂对象的算法应该独立于该对象的组成部分以及它们的装配方式时。
+- 当构造过程必须允许被构造的对象有不同的表示时。
+
+### 优缺点
+
+#### 优点
+建造者模式可以很好的将一个对象的实现与相关的“业务”逻辑分离开来，从而可以在不改变事件逻辑的前提下，使增加(或改变)实现变得非常容易。
+
+#### 缺点
+建造者接口的修改会导致所有执行类的修改。
+
+### 参考
+1. [Wikipedia: Bulider pattern](http://en.wikipedia.org/wiki/Builder_pattern)
+2. [Wikipedia: 生成器模式](http://zh.wikipedia.org/wiki/%E7%94%9F%E6%88%90%E5%99%A8%E6%A8%A1%E5%BC%8F)
+
+
+## 5.原型模式（Prototype pattern）
+原型模式是一种创建者模式，其特点在于通过“复制”一个已经存在的实例来返回新的实例,而不是新建实例。
+
+### 原型模式中主要角色
+
+-  抽象原型(Prototype)角色：声明一个克隆自己的接口
+-  具体原型(Concrete Prototype)角色：实现一个克隆自己的操作
+
+### 适用性
+
+- 当一个系统应该独立于它的产品创建、构成和表示时，要使用Prototype模式
+- 当要实例化的类是在运行时刻指定时，例如动态加载
+- 为了避免创建一个与产品类层次平等的工厂类层次时；
+- 当一个类的实例只能有几个不同状态组合中的一种时。建立相应数目的原型并克隆它们可能比每次用合适的状态手工实例化该类更方便一些
+
+### 优缺点
+
+#### 优点
+- 可以在运行时刻增加和删除产品
+- 可以改变值以指定新对象
+- 可以改变结构以指定新对象
+- 减少子类的构造
+- 用类动态配置应用
+
+#### 缺点
+Prototype模式的最主要缺点就是每一个类必须配备一个克隆方法。而且这个克隆方法需要对类的功能进行通盘考虑，这对全新的类来说不是很难，但对已有的类进行改造时，不一定是件容易的事。
+
+### 参考
+1. [Wikipedia: Prototype pattern](http://en.wikipedia.org/wiki/Prototype_pattern)
+2. [Wikipedia: 原型模式](http://zh.wikipedia.org/wiki/%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F)
+3. [PHP设计模式笔记：使用PHP实现原型模式](http://www.phppan.com/2010/06/php-design-pattern-8-prototype/)
+
+
+## 6.适配器模式（Adapter pattern）
 适配器模式是一种结构型模式，它将一个类的接口转接成用户所期待的。一个适配使得因接口不兼容而不能在一起工作的类工作在一起，做法是将类别自己的接口包裹在一个已存在的类中。
 
 ### 适配器模式中主要角色
@@ -163,7 +388,8 @@ Singleton定义一个getInstance操作，允许客户访问它唯一的实例。
 2. [Wikipedia: 适配器模式](http://zh.wikipedia.org/wiki/%E9%80%82%E9%85%8D%E5%99%A8%E6%A8%A1%E5%BC%8F)
 3. [PHP设计模式笔记：使用PHP实现适配器模式](http://www.phppan.com/2010/07/php-design-pattern-10-adapter/)
 
-## 桥接模式（Bridge pattern）
+
+## 7.桥接模式（Bridge pattern）
 桥接模式是一种结构型模式，它是软件设计模式中最复杂的模式之一，它把事物对象和其具体行为、具体特征分离开来，使它们可以各自独立的变化。事物对象仅是一个抽象的概念。如“圆形”、“三角形”归于抽象的“形状”之下，而“画圆”、“画三角”归于实现行为的“画图”类之下，然后由“形状”调用“画图”。
 
 ### 主要角色
@@ -189,7 +415,8 @@ Singleton定义一个getInstance操作，允许客户访问它唯一的实例。
 2. [Wikipedia: 桥接模式](http://zh.wikipedia.org/wiki/%E6%A9%8B%E6%8E%A5%E6%A8%A1%E5%BC%8F)
 3. [PHP设计模式笔记：使用PHP实现桥接模式](http://www.phppan.com/2010/06/php-design-pattern-5-bridge/)
 
-## 合成模式（Composite pattern）
+
+## 8.合成模式（Composite pattern）
 合成模式是一种结构型模式，它将对象组合成树形结构以表示”部分-整体”的层次结构。Composite使用户对单个对象和组合对象的使用具有一致性。
 Composite变化的是一个对象的结构和组成。
 
@@ -226,7 +453,7 @@ Composite变化的是一个对象的结构和组成。
 1. [Wikipedia: Composite pattern](http://en.wikipedia.org/wiki/Composite_pattern)
 2. [PHP设计模式笔记：使用PHP实现合成模式](http://www.phppan.com/2010/08/php-design-pattern-14-composite/)
 
-## 装饰器模式（Decorator pattern）
+## 9.装饰器模式（Decorator pattern）
 装饰器模式是一种结构型模式，它动态的给一个对象添加一些额外的职责。就增加功能来说，Decorator模式相比生成子类更为灵活【GOF95】
 装饰模式是以对客户透明的方式动态地给一个对象附加上更多的职责。这也就是说，客户端并不会觉得对象在装饰前和装饰后有什么不同。装饰模式可以在不使用创造更多子类的情况下，将对象的功能加以扩展。
 
@@ -257,7 +484,7 @@ Composite变化的是一个对象的结构和组成。
 2. [Wikipedia: 修饰模式](http://zh.wikipedia.org/wiki/%E4%BF%AE%E9%A5%B0%E6%A8%A1%E5%BC%8F)
 3. [PHP设计模式笔记：使用PHP实现装饰模式](http://www.phppan.com/2010/06/php-design-pattern-4-decorator/)
 
-## 门面模式（Facade pattern）
+## 10.门面模式（Facade pattern）
 门面模式是一种结构型模式，它为子系统中的一组接口提供一个一致的界面，Facade模式定义了一个高层次的接口，使得子系统更加容易使用。
 
 ### 主要角色
@@ -294,7 +521,29 @@ Composite变化的是一个对象的结构和组成。
 2. [Wikipedia: 外观模式](http://zh.wikipedia.org/wiki/%E5%A4%96%E8%A7%80%E6%A8%A1%E5%BC%8F)
 3. [PHP设计模式笔记：使用PHP实现门面模式](http://www.phppan.com/2010/06/php-design-pattern-7-facade/)
 
-## 享元模式（Flyweight Pattern）
+## 11.代理模式（Proxy pattern）
+代理模式是一种结构型模式，它可以为其他对象提供一种代理以控制对这个对象的访问。
+
+### 主要角色
+
+- 抽象主题角色(Subject)：它的作用是统一接口。此角色定义了真实主题角色和代理主题角色共用的接口，这样就可以在使用真实主题角色的地方使用代理主题角色。
+- 真实主题角色(RealSubject)：隐藏在代理角色后面的真实对象。
+- 代理主题角色(ProxySubject)：它的作用是代理真实主题，在其内部保留了对真实主题角色的引用。它与真实主题角色都继承自抽象主题角色，保持接口的统一。它可以控制对真实主题的存取，并可能负责创建和删除真实对象。代理角色并不是简单的转发，通常在将调用传递给真实对象之前或之后执行某些操作，当然你也可以只是简单的转发。 与适配器模式相比：适配器模式是为了改变对象的接口，而代理模式并不能改变所代理对象的接口。
+
+### 适用性
+
+- 为一些复杂的子系统提供一组接口
+- 提高子系统的独立性
+- 在层次化结构中，可以使用门面模式定义系统的每一层的接口
+
+
+
+### 参考
+1. [Wikipedia: Proxy pattern](http://en.wikipedia.org/wiki/Proxy_pattern)
+2. [Wikipedia: 代理模式](http://zh.wikipedia.org/wiki/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F)
+3. [代理模式(Proxy)和PHP的反射功能](http://www.phppan.com/2011/10/php-design-pattern-proxy-and-reflection/)
+
+## 12.享元模式（Flyweight Pattern）
 享元模式是一种结构型模式，它使用共享物件，用来尽可能减少内存使用量以及分享资讯给尽可能多的相似物件；它适合用于当大量物件只是重复因而导致无法令人接受的使用大量内存。通常物件中的部分状态是可以分享。常见做法是把它们放在外部数据结构，当需要使用时再将它们传递给享元。
 
 ### 主要角色
@@ -330,96 +579,7 @@ Composite变化的是一个对象的结构和组成。
 2. [Wikipedia: 享元模式](http://zh.wikipedia.org/wiki/%E4%BA%AB%E5%85%83%E6%A8%A1%E5%BC%8F)
 3. [PHP设计模式笔记：使用PHP实现享元模式](http://www.phppan.com/2010/08/php-design-pattern-13-flyweight/)
 
-## 观察者模式（Observer pattern）
-观察者模式是一种行为型模式，它定义对象间的一种一对多的依赖关系，当一个对象的状态发生改变时，所有依赖于它的对象都得到通知并被自动更新。
-
-又称为发布-订阅（Publish-Subscribe）模式、模型-视图（Model-View）模式、源-监听（Source-Listener）模式、或从属者(Dependents)模式
-
-### 主要角色
-
-- 抽象主题（Subject）角色：主题角色将所有对观察者对象的引用保存在一个集合中，每个主题可以有任意多个观察者。抽象主题提供了增加和删除观察者对象的接口。
-- 抽象观察者（Observer）角色：为所有的具体观察者定义一个接口，在观察的主题发生改变时更新自己。
-- 具体主题（ConcreteSubject）角色：存储相关状态到具体观察者对象，当具体主题的内部状态改变时，给所有登记过的观察者发出通知。具体主题角色通常用一个具体子类实现。
-- 具体观察者（ConcretedObserver）角色：存储一个具体主题对象，存储相关状态，实现抽象观察者角色所要求的更新接口，以使得其自身状态和主题的状态保持一致。
-
-### 适用性
-
-- 当一个抽象模型有两个方面，其中一个方面依赖于另一个方面。
-- 当对一个对象的改变需要同时改变其它对象，而不知道具体有多少个对象待改变。
-- 当一个对象必须通知其它对象，而它又不能假定其它对象是谁。换句话说，你不希望这些对象是紧密耦合的。
-
-
-### 优缺点
-
-#### 优点
-
-- 观察者和主题之间的耦合度较小。
-- 支持广播通信。
-
-#### 缺点
-
-- 由于观察者并不知道其它观察者的存在，它可能对改变目标的最终代价一无所知。这可能会引起意外的更新。
-
-### 参考
-1. [Wikipedia: Observer pattern](http://en.wikipedia.org/wiki/Observer_pattern)
-2. [Wikipedia: 观察者模式](http://zh.wikipedia.org/wiki/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F)
-3. [PHP设计模式笔记：使用PHP实现观察者模式](http://www.phppan.com/2010/09/php-design-pattern-17-observer/)
-
-## 原型模式（Prototype pattern）
-原型模式是一种创建者模式，其特点在于通过“复制”一个已经存在的实例来返回新的实例,而不是新建实例。
-
-### 原型模式中主要角色
-
--  抽象原型(Prototype)角色：声明一个克隆自己的接口
--  具体原型(Concrete Prototype)角色：实现一个克隆自己的操作
-
-### 适用性
-
-- 当一个系统应该独立于它的产品创建、构成和表示时，要使用Prototype模式
-- 当要实例化的类是在运行时刻指定时，例如动态加载
-- 为了避免创建一个与产品类层次平等的工厂类层次时；
-- 当一个类的实例只能有几个不同状态组合中的一种时。建立相应数目的原型并克隆它们可能比每次用合适的状态手工实例化该类更方便一些
-
-### 优缺点
-
-#### 优点
-- 可以在运行时刻增加和删除产品
-- 可以改变值以指定新对象
-- 可以改变结构以指定新对象
-- 减少子类的构造
-- 用类动态配置应用
-
-#### 缺点
-Prototype模式的最主要缺点就是每一个类必须配备一个克隆方法。而且这个克隆方法需要对类的功能进行通盘考虑，这对全新的类来说不是很难，但对已有的类进行改造时，不一定是件容易的事。
-
-### 参考
-1. [Wikipedia: Prototype pattern](http://en.wikipedia.org/wiki/Prototype_pattern)
-2. [Wikipedia: 原型模式](http://zh.wikipedia.org/wiki/%E5%8E%9F%E5%9E%8B%E6%A8%A1%E5%BC%8F)
-3. [PHP设计模式笔记：使用PHP实现原型模式](http://www.phppan.com/2010/06/php-design-pattern-8-prototype/)
-
-## 代理模式（Proxy pattern）
-代理模式是一种结构型模式，它可以为其他对象提供一种代理以控制对这个对象的访问。
-
-### 主要角色
-
-- 抽象主题角色(Subject)：它的作用是统一接口。此角色定义了真实主题角色和代理主题角色共用的接口，这样就可以在使用真实主题角色的地方使用代理主题角色。
-- 真实主题角色(RealSubject)：隐藏在代理角色后面的真实对象。
-- 代理主题角色(ProxySubject)：它的作用是代理真实主题，在其内部保留了对真实主题角色的引用。它与真实主题角色都继承自抽象主题角色，保持接口的统一。它可以控制对真实主题的存取，并可能负责创建和删除真实对象。代理角色并不是简单的转发，通常在将调用传递给真实对象之前或之后执行某些操作，当然你也可以只是简单的转发。 与适配器模式相比：适配器模式是为了改变对象的接口，而代理模式并不能改变所代理对象的接口。
-
-### 适用性
-
-- 为一些复杂的子系统提供一组接口
-- 提高子系统的独立性
-- 在层次化结构中，可以使用门面模式定义系统的每一层的接口
-
-
-
-### 参考
-1. [Wikipedia: Proxy pattern](http://en.wikipedia.org/wiki/Proxy_pattern)
-2. [Wikipedia: 代理模式](http://zh.wikipedia.org/wiki/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F)
-3. [代理模式(Proxy)和PHP的反射功能](http://www.phppan.com/2011/10/php-design-pattern-proxy-and-reflection/)
-
-## 策略模式（Strategy pattern）
+## 13.策略模式（Strategy pattern）
 策略模式是一种行为型模式，它定义一系列的算法，把它们一个个封装起来，并且使它们可相互替换。策略模式可以使算法可独立于使用它的客户而变化。
 
 ### 主要角色
@@ -455,7 +615,92 @@ Prototype模式的最主要缺点就是每一个类必须配备一个克隆方�
 2. [Wikipedia: 策略模式](http://zh.wikipedia.org/wiki/%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F)
 3. [PHP设计模式笔记：使用PHP实现策略模式](http://www.phppan.com/2010/07/php-design-pattern-12-strategy/)
 
-## 命令模式（Command pattern）
+## 14.模板方法模式（Template method pattern）
+模板方法模式模式是一种行为型模式，它定义一个操作中的算法的骨架，而将一些步骤延迟到子类中。Template Method 使得子类可以在不改变一个算法的结构的情况下重定义该算法的某些特定的步骤。
+
+### 主要角色
+
+#### 抽象模板(AbstractClass)角色
+定义一个或多个抽象方法让子类实现。这些抽象方法叫做基本操作，它们是顶级逻辑的组成部分。
+
+定义一个模板方法。这个模板方法一般是一个具体方法，它给出顶级逻辑的骨架，而逻辑的组成步骤在对应的抽象操作中，这些操作将会推迟到子类中实现。同时，顶层逻辑也可以调用具体的实现方法
+
+##### 具体模板(ConcrteClass)角色
+实现父类的一个或多个抽象方法，作为顶层逻辑的组成而存在。
+
+每个抽象模板可以有多个具体模板与之对应，而每个具体模板有其自己对抽象方法（也就是顶层逻辑的组成部分）的实现，从而使得顶层逻辑的实现各不相同。
+
+### 适用性
+
+- 一次性实现一个算法的不变的部分，并将可变的行为留给子类来实现。
+- 各子类中公共的行为应被提取出来并集中到一个公共父类中以避免代码重复。
+- 控制子类扩展。
+
+### 参考
+1. [Wikipedia: Template method pattern](http://en.wikipedia.org/wiki/Template_method_pattern)
+2. [Wikipedia: 模板方法模式](http://zh.wikipedia.org/wiki/%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F)
+3. [PHP设计模式笔记：使用PHP实现模板方法模式](http://www.phppan.com/2010/09/php-design-pattern-16-template-method/)
+
+## 15.观察者模式（Observer pattern）
+观察者模式是一种行为型模式，它定义对象间的一种一对多的依赖关系，当一个对象的状态发生改变时，所有依赖于它的对象都得到通知并被自动更新。
+
+又称为发布-订阅（Publish-Subscribe）模式、模型-视图（Model-View）模式、源-监听（Source-Listener）模式、或从属者(Dependents)模式
+
+### 主要角色
+
+- 抽象主题（Subject）角色：主题角色将所有对观察者对象的引用保存在一个集合中，每个主题可以有任意多个观察者。抽象主题提供了增加和删除观察者对象的接口。
+- 抽象观察者（Observer）角色：为所有的具体观察者定义一个接口，在观察的主题发生改变时更新自己。
+- 具体主题（ConcreteSubject）角色：存储相关状态到具体观察者对象，当具体主题的内部状态改变时，给所有登记过的观察者发出通知。具体主题角色通常用一个具体子类实现。
+- 具体观察者（ConcretedObserver）角色：存储一个具体主题对象，存储相关状态，实现抽象观察者角色所要求的更新接口，以使得其自身状态和主题的状态保持一致。
+
+### 适用性
+
+- 当一个抽象模型有两个方面，其中一个方面依赖于另一个方面。
+- 当对一个对象的改变需要同时改变其它对象，而不知道具体有多少个对象待改变。
+- 当一个对象必须通知其它对象，而它又不能假定其它对象是谁。换句话说，你不希望这些对象是紧密耦合的。
+
+
+### 优缺点
+
+#### 优点
+
+- 观察者和主题之间的耦合度较小。
+- 支持广播通信。
+
+#### 缺点
+
+- 由于观察者并不知道其它观察者的存在，它可能对改变目标的最终代价一无所知。这可能会引起意外的更新。
+
+### 参考
+1. [Wikipedia: Observer pattern](http://en.wikipedia.org/wiki/Observer_pattern)
+2. [Wikipedia: 观察者模式](http://zh.wikipedia.org/wiki/%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F)
+3. [PHP设计模式笔记：使用PHP实现观察者模式](http://www.phppan.com/2010/09/php-design-pattern-17-observer/)
+
+## 16.迭代器模式（Iterator pattern）
+迭代器模式是一种行为型模式，它是一种最简单也最常见的设计模式。它可以让使用者透过特定的接口巡访容器中的每一个元素而不用了解底层的实作。
+
+### 适用性
+- 在希望利用语言本身的遍历函数便利自定义结构时，例如PHP中的foreach函数
+
+### 参考
+1. [Wikipedia: Iterator pattern](http://en.wikipedia.org/wiki/Iterator_pattern)
+2. [PHP中迭代器的简单实现及Yii框架中的迭代器实现](http://www.phppan.com/2010/04/php-iterator-and-yii-cmapiterator/)
+
+## 17.责任链模式（Chain of responsibility pattern）
+责任链模式是一种行为型模式，它包含了一些命令对象和一系列的处理对象。每一个处理对象决定它能处理哪些命令对象，它也知道如何将它不能处理的命令对象传递给该链中的下一个处理对象。该模式还描述了往该处理链的末尾添加新的处理对象的方法。
+
+### 主要角色
+
+- 抽象责任(Responsibility）角色：定义所有责任支持的公共方法。
+- 具体责任(Concrete Responsibility)角色：以抽象责任接口实现的具体责任
+- 责任链(Chain of responsibility)角色：设定责任的调用规则
+
+
+### 参考
+1. [Wikipedia: Chain-of-responsibility pattern](http://en.wikipedia.org/wiki/Chain_of_responsibility_pattern)
+2. [Wikipedia: 责任链模式](http://zh.wikipedia.org/wiki/%E8%B4%A3%E4%BB%BB%E9%93%BE%E6%A8%A1%E5%BC%8F)
+
+## 18.命令模式（Command pattern）
 命令模式是一种行为型模式，它将一个请求封装为一个对象，从而使用你可用不同的请求对客户进行参数化；对请求排队或记录请求日志，以及支持可撤消的操作。命令模式把发出命令的责任和执行命令的责任分割开，委派给不同的对象。
 
 请求的一方发出请求要求执行一个操作；接收的一方收到请求，并执行操作。命令模式允许请求的一方和接收的一方独立开来，使得请求的一方不必知道接收请求的一方的接口，更不必知道请求是怎么被接收，以及操作是否被执行、何时被执行，以及是怎么被执行的。
@@ -495,37 +740,7 @@ Prototype模式的最主要缺点就是每一个类必须配备一个克隆方�
 2. [Wikipedia: 命令模式](http://zh.wikipedia.org/wiki/%E5%91%BD%E4%BB%A4%E6%A8%A1%E5%BC%8F)
 3. [PHP设计模式笔记：使用PHP实现命令模式](http://www.phppan.com/2010/08/php-design-pattern-15-comman/)
 
-## 解释器模式（Interpreter pattern）
-解释器模式是一种行为型模式，它给定一个语言, 定义它的文法的一种表示，并定义一个解释器, 该解释器使用该表示来解释语言中的句子。
-
-
-### 参考
-1. [Wikipedia: Strategy pattern](http://en.wikipedia.org/wiki/Strategy_pattern)
-2. [php设计模式 Interpreter(解释器模式)](http://www.jb51.net/article/27484.htm)
-
-## 迭代器模式（Iterator pattern）
-迭代器模式是一种行为型模式，它是一种最简单也最常见的设计模式。它可以让使用者透过特定的接口巡访容器中的每一个元素而不用了解底层的实作。
-
-### 适用性
-- 在希望利用语言本身的遍历函数便利自定义结构时，例如PHP中的foreach函数
-
-### 参考
-1. [Wikipedia: Iterator pattern](http://en.wikipedia.org/wiki/Iterator_pattern)
-2. [PHP中迭代器的简单实现及Yii框架中的迭代器实现](http://www.phppan.com/2010/04/php-iterator-and-yii-cmapiterator/)
-
-## 中介者模式（Mediator pattern）
-中介者模式是一种行为型模式，它包装了一系列对象相互作用的方式，使得这些对象不必相互明显作用，从而使它们可以松散偶合。当某些对象之间的作用发生改变时，不会立即影响其他的一些对象之间的作用，保证这些作用可以彼此独立的变化。
-
-### 主要角色
-
-- 中介者(Mediator）角色：定义了对象间相互作用的接口
-- 具体中介者(ConcreteMediator)角色：实现了中介者定义的接口。
-- 具体对象(ConcreteColleague)角色：通过中介者和别的对象进行交互
-
-### 参考
-1. [Wikipedia: Mediator pattern](http://en.wikipedia.org/wiki/Mediator_pattern)
-
-## 备忘录模式（Memento pattern）
+## 19.备忘录模式（Memento pattern）
 备忘录模式是一种行为型模式，它在不破坏封装性的前提下，捕获一个对象的内部状态，并在该对象之外保存这个状态。这样可以在以后把该对象的状态恢复到之前保存的状态。
 
 ### 主要角色
@@ -557,7 +772,36 @@ Prototype模式的最主要缺点就是每一个类必须配备一个克隆方�
 1. [Wikipedia: Memento pattern](http://en.wikipedia.org/wiki/Memento_pattern)
 2. [PHP设计模式笔记：使用PHP实现备忘录模式](http://www.phppan.com/2010/10/php-design-pattern-18-memento/)
 
-## 访问者模式（Visitor pattern）
+
+## 20.状态模式（Strategy pattern）
+状态模式是一种行为型模式，它允许一个对象在其内部状态改变时改变它的行为。对象看起来似乎修改了它的类，状态模式变化的位置在于对象的状态。
+
+### 主要角色
+
+- 抽象状态(State)角色：定义一个接口，用以封装环境对象的一个特定的状态所对应的行为
+- 具体状态（ConcreteState)角色：每一个具体状态类都实现了环境（Context）的一个状态所对应的行为
+- 环境(Context)角色：定义客户端所感兴趣的接口，并且保留一个具体状态类的实例。这个具体状态类的实例给出此环境对象的现有状态
+
+### 适用性
+
+- 一个对象的行为取决于它的状态，并且它必须在运行时刻根据状态改变它的行为
+- 一个操作中含有庞大的多分支的条件语句，且这些分支依赖于该对象的状态。这个状态通常用一个或多个枚举常量表示。通常，有多个操作包含这一相同的条件结构。State模式模式将每一个条件分支放入一个独立的类中。这使得你可以要所对象自身的情况将对象的状态作为一个对象，这一对象可以不依赖于其他对象而独立变化
+
+
+### 优缺点
+
+#### 优点
+
+- 它将与特定状态相关的行为局部化
+- 它使得状态转换显示化
+- State对象可被共享
+
+### 参考
+1. [Wikipedia: State pattern](http://en.wikipedia.org/wiki/State_pattern)
+2. [PHP设计模式笔记：使用PHP实现状态模式](http://www.phppan.com/2010/07/php-design-pattern-11-state/)
+
+
+## 21.访问者模式（Visitor pattern）
 访问者模式是一种行为型模式，访问者表示一个作用于某对象结构中各元素的操作。它可以在不修改各元素类的前提下定义作用于这些元素的新操作，即动态的增加具体访问者角色。
 
 访问者模式利用了双重分派。先将访问者传入元素对象的Accept方法中，然后元素对象再将自己传入访问者，之后访问者执行元素的相应方法。
@@ -594,141 +838,29 @@ Prototype模式的最主要缺点就是每一个类必须配备一个克隆方�
 2. [Wikipedia: 访问者模式](http://zh.wikipedia.org/wiki/%E8%AE%BF%E9%97%AE%E8%80%85%E6%A8%A1%E5%BC%8F)
 3. [PHP设计模式笔记：使用PHP实现访问者模式](http://www.phppan.com/2010/05/php-design-pattern-1-visitor/)
 
-## 策略模式（Strategy pattern）
-状态模式是一种行为型模式，它允许一个对象在其内部状态改变时改变它的行为。对象看起来似乎修改了它的类，状态模式变化的位置在于对象的状态。
+## 22.中介者模式（Mediator pattern）
+中介者模式是一种行为型模式，它包装了一系列对象相互作用的方式，使得这些对象不必相互明显作用，从而使它们可以松散偶合。当某些对象之间的作用发生改变时，不会立即影响其他的一些对象之间的作用，保证这些作用可以彼此独立的变化。
 
 ### 主要角色
 
-- 抽象状态(State)角色：定义一个接口，用以封装环境对象的一个特定的状态所对应的行为
-- 具体状态（ConcreteState)角色：每一个具体状态类都实现了环境（Context）的一个状态所对应的行为
-- 环境(Context)角色：定义客户端所感兴趣的接口，并且保留一个具体状态类的实例。这个具体状态类的实例给出此环境对象的现有状态
-
-### 适用性
-
-- 一个对象的行为取决于它的状态，并且它必须在运行时刻根据状态改变它的行为
-- 一个操作中含有庞大的多分支的条件语句，且这些分支依赖于该对象的状态。这个状态通常用一个或多个枚举常量表示。通常，有多个操作包含这一相同的条件结构。State模式模式将每一个条件分支放入一个独立的类中。这使得你可以要所对象自身的情况将对象的状态作为一个对象，这一对象可以不依赖于其他对象而独立变化
-
-
-### 优缺点
-
-#### 优点
-
-- 它将与特定状态相关的行为局部化
-- 它使得状态转换显示化
-- State对象可被共享
+- 中介者(Mediator）角色：定义了对象间相互作用的接口
+- 具体中介者(ConcreteMediator)角色：实现了中介者定义的接口。
+- 具体对象(ConcreteColleague)角色：通过中介者和别的对象进行交互
 
 ### 参考
-1. [Wikipedia: State pattern](http://en.wikipedia.org/wiki/State_pattern)
-2. [PHP设计模式笔记：使用PHP实现状态模式](http://www.phppan.com/2010/07/php-design-pattern-11-state/)
+1. [Wikipedia: Mediator pattern](http://en.wikipedia.org/wiki/Mediator_pattern)
 
-## 抽象工厂模式（Abstract Factory pattern）
-抽象工厂模式是一种创建型模式，它提供了一种方式，可以将一组具有同一主题的单独的工厂封装起来。它的实质是“提供接口，创建一系列相关或独立的对象，而不指定这些对象的具体类”。
-
-抽象工厂模式提供一个创建一系统相关或相互依赖对象的接口，而无需指定它们具体的类。
-
-### 抽象工厂模式中主要角色
-
-- 抽象工厂(Abstract Factory)角色：它声明创建抽象产品对象的接口
-- 具体工厂(Concrete Factory)角色：实现创建产品对象的操作
-- 抽象产品(Abstract Product)角色：声明一类产品的接口
-- 具体产品(Concrete Product)角色：实现抽象产品角色所定义的接口
-
-这个和工厂方法模式类似，我们不再只要一个汉堡，可能是4个汉堡2个鸡翅，我们还是对服务员说，服务员属于具体工厂，抽象产品就是麦当劳可卖的食物，具体产品是我们跟服务员要的食物。
-
-### 适用性
-
-- 一个系统要独立于它的产品的创建、组合和表示时。
-- 一个系统要由多个产品系列中的一个来配置时。
-- 需要强调一系列相关的产品对象的设计以便进行联合使用时。
-- 提供一个产品类库，而只想显示它们的接口而不是实现时。
-
-
-在这里例子中，工厂类实现了一组工厂方法。如果要增加新的功能，可以增加新的接口，让新的工厂类实现这个接口即可，而无需修改现有的工厂类。
-
-### 优缺点
-
-#### 优点
-- 分离了具体的类
-- 使增加或替换产品族变得容易
-- 有利于产品的一致性
-
-#### 缺点
-难以支持新种类的产品。这是因为AbstractFactory接口确定了可以被创建的产品集合。支持新各类的产品就需要扩展访工厂接口，从而导致AbstractFactory类及其所有子类的改变。
-
-### 参考
-1. [Wikipedia: 抽象工厂](http://zh.wikipedia.org/wiki/%E6%8A%BD%E8%B1%A1%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F)
-2. [Wikipedia: Abstract factory pattern](http://en.wikipedia.org/wiki/Abstract_factory_pattern)
-3. [PHP设计模式笔记：使用PHP实现抽象工厂模式](http://www.phppan.com/2010/05/php-design-pattern-3-abstract-factory/)
-
-## 工厂方法模式（Factory method pattern）
-工厂方法模式是一种创建型模式，这种模式使用“工厂”概念来完成对象的创建而不用具体说明这个对象。
-
-在面向对象程序设计中，工厂通常是一个用来创建其他对象的对象。工厂是构造方法的抽象，用来实现不同的分配方案。
-
-### 主要角色
-- 抽象产品(Product)角色：具体产品对象共有的父类或者接口。
-- 具体产品(Concrete Product)角色：实现抽象产品角色所定义的接口
-- 抽象工厂(Creator)角色：它声明了工厂方法，该方法返回Product对象
-- 具体工厂(Concrete Creator)：实现抽象工厂接口
-
-工厂方法模式就像我们去麦当劳买汉堡，我们只要找到服务员，让他帮我们拿来汉堡即可。其中具体某个服务员就像具体工厂，他继承了服务员应有的服务。汉堡在到手以前属于抽象产品，而我们拿到的汉堡就属于具体产品。
-
-### 适用性
-- 创建对象需要大量重复的代码（例如创建一个MySQL操作类，需要配置很多选项，这些都可以在工厂方法中进行）。
-- 创建对象需要访问某些信息，而这些信息不应该包含在复合类中。
-- 创建对象的生命周期必须集中管理，以保证在整个程序中具有一致的行为。
-
-上例中的`createButton()`方法即所谓的工厂方法，它所在的类仅仅是这个方法的载体。工厂方法的核心功能是创建类并返回，这个方法可以产生一个类，也可以产生多种类。这个方法本身的载体也并不局限，将其设置为静态方法也是可以的，这个根据自己的情况而定。
-
-### 优缺点
-#### 优点
-工厂方法模式可以允许系统在不修改工厂角色的情况下引进新产品。
-
-#### 缺点
-- 重构已经存在的类会破坏客户端代码。
-- 如果工厂方法所在类的构造函数为私有，则工厂方法无法继续扩展，或者必须实现工厂方法所在类的全部依赖方法。
-
-### 参考
-1. [Wikipedia: Factory method pattern](http://en.wikipedia.org/wiki/Factory_method_pattern)
-2. [Wikipedia: 工厂方法模式](http://zh.wikipedia.org/wiki/%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F)
-3. [PHP设计模式笔记：使用PHP实现工厂模式](http://www.phppan.com/2010/07/php-design-pattern-9-factory-method/)
-
-## 模板方法模式（Template method pattern）
-模板方法模式模式是一种行为型模式，它定义一个操作中的算法的骨架，而将一些步骤延迟到子类中。Template Method 使得子类可以在不改变一个算法的结构的情况下重定义该算法的某些特定的步骤。
-
-### 主要角色
-
-#### 抽象模板(AbstractClass)角色
-定义一个或多个抽象方法让子类实现。这些抽象方法叫做基本操作，它们是顶级逻辑的组成部分。
-
-定义一个模板方法。这个模板方法一般是一个具体方法，它给出顶级逻辑的骨架，而逻辑的组成步骤在对应的抽象操作中，这些操作将会推迟到子类中实现。同时，顶层逻辑也可以调用具体的实现方法
-
-##### 具体模板(ConcrteClass)角色
-实现父类的一个或多个抽象方法，作为顶层逻辑的组成而存在。
-
-每个抽象模板可以有多个具体模板与之对应，而每个具体模板有其自己对抽象方法（也就是顶层逻辑的组成部分）的实现，从而使得顶层逻辑的实现各不相同。
-
-### 适用性
-
-- 一次性实现一个算法的不变的部分，并将可变的行为留给子类来实现。
-- 各子类中公共的行为应被提取出来并集中到一个公共父类中以避免代码重复。
-- 控制子类扩展。
-
-### 参考
-1. [Wikipedia: Template method pattern](http://en.wikipedia.org/wiki/Template_method_pattern)
-2. [Wikipedia: 模板方法模式](http://zh.wikipedia.org/wiki/%E6%A8%A1%E6%9D%BF%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F)
-3. [PHP设计模式笔记：使用PHP实现模板方法模式](http://www.phppan.com/2010/09/php-design-pattern-16-template-method/)
-
-## 责任链模式（Chain of responsibility pattern）
-责任链模式是一种行为型模式，它包含了一些命令对象和一系列的处理对象。每一个处理对象决定它能处理哪些命令对象，它也知道如何将它不能处理的命令对象传递给该链中的下一个处理对象。该模式还描述了往该处理链的末尾添加新的处理对象的方法。
-
-### 主要角色
-
-- 抽象责任(Responsibility）角色：定义所有责任支持的公共方法。
-- 具体责任(Concrete Responsibility)角色：以抽象责任接口实现的具体责任
-- 责任链(Chain of responsibility)角色：设定责任的调用规则
+## 23.解释器模式（Interpreter pattern）
+解释器模式是一种行为型模式，它给定一个语言, 定义它的文法的一种表示，并定义一个解释器, 该解释器使用该表示来解释语言中的句子。
 
 
 ### 参考
-1. [Wikipedia: Chain-of-responsibility pattern](http://en.wikipedia.org/wiki/Chain_of_responsibility_pattern)
-2. [Wikipedia: 责任链模式](http://zh.wikipedia.org/wiki/%E8%B4%A3%E4%BB%BB%E9%93%BE%E6%A8%A1%E5%BC%8F)
+1. [Wikipedia: Strategy pattern](http://en.wikipedia.org/wiki/Strategy_pattern)
+2. [php设计模式 Interpreter(解释器模式)](http://www.jb51.net/article/27484.htm)
+
+
+
+
+
+
+
