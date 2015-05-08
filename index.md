@@ -5,8 +5,8 @@ title: Welcome
 
 
 
-> 201306 背井来到深圳 重新认识世界 
-博客--一个由自己肆意的空间（在[Github](https://github.com/zcwsmile/zcwsmile.github.io)）
+> 201306 背井来到深圳 重新认识自己
+一个由自己肆意的空间--博客（部署在[Github](https://github.com/zcwsmile/zcwsmile.github.io)）
 
 ### Hi, thank you for visiting this blog. My name is Kiveen, a C++ developer now in Shenzhen.China. This is my technology blog, then I maybe share some ideas of live, the observation of society and so on.
 
