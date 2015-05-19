@@ -6,10 +6,6 @@ tags: [Pattern]
 keywords: 设计模式,Pattern,建造者模式,单例模式,适配器模式,桥接模式,组合模式,装饰器模式,门面模式,享元模式,观察者模式,备忘录模式,中介者模式,迭代器模式,解释器模式,策略模式,命令模式,代理模式,原型模式,状态模式,访问者模式,模板方法模式,责任链模式,抽象工厂模式,工厂模式
 ---
 
-> 由于工作中需要写一个比较复杂的类库，这个类库需要很高的扩展性、维护性及复用性。为了麻烦现在简单未来，使用设计模式思想来优化类库可以使工作事半功倍，在这里记录一下各种设计模式，总结一下知识，顺便也可以做为自己日后的参考。
-
-## 设计模式（Design Patterns）
-
 > 设计模式（Design pattern）是一套被反复使用、多数人知晓的、经过分类编目的、代码设计经验的总结。使用设计模式是为了可重用代码、让代码更容易被他人理解、保证代码可靠性。   --[百度百科](http://baike.baidu.com/view/66964.htm)
 
 > In software engineering, a design pattern is a general reusable solution to a commonly occurring problem within a given context in software design.   --[Wikipedia](http://en.wikipedia.org/wiki/Software_design_pattern)
@@ -264,6 +260,16 @@ public:
 抽象工厂模式是一种创建型模式，在应用这个模式时，单例对象的类必须保证只有一个实例存在。
 
 实现单例模式的思路是：一个类能返回对象一个引用(永远是同一个)和一个获得该实例的方法（必须是静态方法，通常使用getInstance这个名称）；当我们调用这个方法时，如果类持有的引用不为空就返回这个引用，如果类保持的引用为空就创建该类的实例并将实例的引用赋予该类保持的引用；同时我们还将该类的构造函数定义为私有方法，这样其他处的代码就无法通过调用该类的构造函数来实例化该类的对象，只有通过该类提供的静态方法来得到该类的唯一实例。
+
+class Singleton{
+	private static Singleton singleton = new Singleton();
+	private Singleton(){
+	}
+	public static Singleton getSingleton(){
+		return Singleton;
+	}
+	public static void dosomething(){}
+}
 
 ### 单例模式中主要角色
 Singleton定义一个getInstance操作，允许客户访问它唯一的实例。
