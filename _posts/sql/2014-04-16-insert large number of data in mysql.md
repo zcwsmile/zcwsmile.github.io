@@ -1,6 +1,6 @@
 ---
 layout: post
-title: MySQL大量数据插入各种方法性能分析与比较
+title: MySQL大数据插入方法比较
 category: sql
 tags: MySQL
 keywords: MySQL,大量数据,插入,性能

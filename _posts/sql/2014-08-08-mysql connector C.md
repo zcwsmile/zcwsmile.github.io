@@ -1,6 +1,6 @@
 ---
 layout: post
-title: 用MySQL connector/C++链接MySQL数据库
+title: 用connector/C++链接MySQL数据库
 category: sql
 tags: MySQL
 keywords: MySQL
