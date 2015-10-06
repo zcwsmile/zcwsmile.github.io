@@ -4,7 +4,7 @@ title: CocoaPods安装和使用教程
 category: ios
 tags: ios CocoaPods Pods
 keywords: CocoaPods Pods
-description: CocoaPodsx
+description: CocoaPods
 ---
 
 
