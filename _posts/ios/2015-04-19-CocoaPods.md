@@ -1,22 +1,13 @@
 ﻿---
 layout: post
-title: ios Web
-category: ios
-tags: ios web
-keywords: web ios
-description: web service
----
-
-
-
----
-layout: post
 title: CocoaPods安装和使用教程
 category: ios
 tags: ios CocoaPods Pods
 keywords: CocoaPods Pods
 description: CocoaPods
 ---
+
+## CocoaPods安装和使用教程
 
 转载：Code4App原创文章,请注明出处：http://code4app.com/article/cocoapods-install-usage
 
@@ -169,7 +160,3 @@ Available versions: 0.1.6
 那你也许会问，什么时候用 $ pod install，什么时候用 $ pod update 呢，我又不知道类库有没有新版本。好吧，那你每次直接用 $ pod update 算了。或者先用 $ pod install，如果不行，再用 $ pod update。
 
 好了，小编就啰嗦到这里吧。上述都只是CocoaPods的最基本用法。要继续研究CocoaPods其他高级用法，请到这里CocoaPods Wiki(https://github.com/CocoaPods/CocoaPods/wiki) 。
-
-
-
-
