@@ -8,7 +8,7 @@ description: CocoaPods
 ---
 
 
-转载：Code4App 原创文章。请注明出处：http://code4app.com/article/cocoapods-install-usage
+转载：Code4App原创文章,请注明出处：http://code4app.com/article/cocoapods-install-usage
 
 ———目录
 ———CocoaPods是什么？
