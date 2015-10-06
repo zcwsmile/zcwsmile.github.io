@@ -4,10 +4,10 @@ title: CocoaPods安装和使用教程
 category: ios
 tags: ios CocoaPods Pods
 keywords: CocoaPods Pods
-description: CocoaPods
+description: CocoaPodsx
 ---
 
-## CocoaPods安装和使用教程
+
 
 转载：Code4App原创文章,请注明出处：http://code4app.com/article/cocoapods-install-usage
 
