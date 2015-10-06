@@ -9,12 +9,12 @@ description: CocoaPods
 
 转载：Code4App原创文章,请注明出处：http://code4app.com/article/cocoapods-install-usage
 
-———目录
-———CocoaPods是什么？
-———如何下载和安装CocoaPods？
-———如何使用CocoaPods？
-———场景1：利用CocoaPods，在项目中导入AFNetworking类库
-———场景2：如何正确编译运行一个包含CocoPods类库的项目
+目录
+CocoaPods是什么？
+如何下载和安装CocoaPods？
+如何使用CocoaPods？
+场景1：利用CocoaPods，在项目中导入AFNetworking类库
+场景2：如何正确编译运行一个包含CocoPods类库的项目
 ## 1、CocoaPods是什么？
 当你开发iOS应用时，会经常使用到很多第三方开源类库，比如JSONKit，AFNetWorking等等。可能某个类库又用到其他类库，所以要使用它，必须得另外下载其他类库，而其他类库又用到其他类库，“子子孙孙无穷尽也”，这也许是比较特殊的情况。总之小编的意思就是，手动一个个去下载所需类库十分麻烦。另外一种常见情况是，你项目中用到的类库有更新，你必须得重新下载新版本，重新加入到项目中，十分麻烦。如果能有什么工具能解决这些恼人的问题，那将“善莫大焉”。所以，你需要 CocoaPods。
 
