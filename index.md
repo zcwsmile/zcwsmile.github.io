@@ -5,13 +5,13 @@ title: Welcome
 
 
 
-> 201306 背井来到深圳 重新认识自己
-一个由自己肆意的空间--博客（部署在[Github](https://github.com/zcwsmile/zcwsmile.github.io)）
+> 201306来到深圳 重新认识自己
+一个由自己肆意的空间（部署在[Github](https://github.com/zcwsmile/zcwsmile.github.io)）
 
-### Hi, thank you for visiting this blog. My name is Kiveen, a C++ developer now in Shenzhen.China. This is my technology blog, then I maybe share some ideas of live, the observation of society and so on.
+### Hi, thank you for visiting this blog. My name is Kiveen, a C++ developer and iOS devloper now in Shenzhen. This is my technology blog, then I maybe share some ideas of live, and so on.
 
-### If you have any question, suggestion or correction, pls feel free to leave a comment or contact me with <font style="color:blue;" >zcwsmile@gmail.com</font>, and it will be appreciated soon. 
-Finally, thanks [SuYan](http://yansu.org)，because this blog is from him,THX
+### If you have any question, suggestion or correction, just to leave a comment or contact me with <font style="color:blue;" >zcwsmile@gmail.com</font>, and it will be appreciated soon. 
+Finally, thanks [SuYan](http://yansu.org)，because this blog is from him,Thx
 
 
 
