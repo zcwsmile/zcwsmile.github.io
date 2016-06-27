@@ -5,8 +5,8 @@ title: Welcome
 
 
 
-> 201306来到深圳 重新认识自己
-一个由自己肆意的空间（部署在[Github](https://github.com/zcwsmile/zcwsmile.github.io)）
+> 201306来到深圳 重新认识自己。
+> 这是一个由自己肆意的空间（部署在[Github](https://github.com/zcwsmile/zcwsmile.github.io)）
 
 ### Hi, thank you for visiting this blog. My name is Kiveen, a C++ developer and iOS devloper now in Shenzhen. This is my technology blog, then I maybe share some ideas of live, and so on.
 
