@@ -1,9 +1,9 @@
 ---
 layout: post
 title: CocoaPods安装和使用
-category: ios
-tags: ios CocoaPods Pods
-keywords: CocoaPods Pods
+category: iOS
+tags: iOS CocoaPods Pods
+keywords: CocoaPods Pods ios
 description: CocoaPods
 ---
 
