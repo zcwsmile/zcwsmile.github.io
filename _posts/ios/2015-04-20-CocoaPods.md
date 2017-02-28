@@ -1,6 +1,6 @@
 ---
 layout: post
-title: CocoaPods安装和使用
+title: CocoaPods安装和使用(最新版201703)
 category: iOS
 tags: iOS CocoaPods Pods
 keywords: CocoaPods Pods ios
@@ -26,10 +26,19 @@ $ sudo gem install cocoapods
 $ pod setup
 
 但是，如果你在天朝，在终端中敲入这个命令之后，会发现半天没有任何反应。原因无他，因为那堵墙阻挡了cocoapods.org。
-我们可以用淘宝的Ruby镜像来访问cocoapods。按照下面的顺序在终端中敲入依次敲入命令：
-$ gem sources --remove https://rubygems.org/
-$ gem sources -a https://ruby.taobao.org/        //已经升级成https了
-$ gem sources -l                                //验证你的Ruby镜像是并且仅是https://ruby.taobao.org/
+
+*********************************
+*********************************
+先切换gem源
+gem sources --remove https://rubygems.org/
+gem source -a https://gems.ruby-china.org        //国内最新的腾讯云的源
+查看是否切换成功
+gem source -l
+
+//升级了cocoapods了 1.1.1
+sudo gem install -n /usr/local/bin cocoapods --pre
+*******************************
+*******************************
 
 1、这时候，你再次在终端中运行：
 $ sudo gem install cocoapods
