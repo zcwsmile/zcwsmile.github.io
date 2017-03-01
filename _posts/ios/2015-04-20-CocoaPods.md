@@ -1,9 +1,9 @@
 ---
 layout: post
-title: CocoaPods安装和使用(最新版201703)
+title: CocoaPods安装和使用(最新201703)
 category: iOS
 tags: iOS CocoaPods Pods
-keywords: CocoaPods Pods ios
+keywords: CocoaPods Pods 更新 安装
 description: CocoaPods
 ---
 
@@ -27,29 +27,26 @@ $ pod setup
 
 但是，如果你在天朝，在终端中敲入这个命令之后，会发现半天没有任何反应。原因无他，因为那堵墙阻挡了cocoapods.org。
 
-*********************************
-*********************************
-先切换gem源
-gem sources --remove https://rubygems.org/
-gem source -a https://gems.ruby-china.org        //国内最新的腾讯云的源
-查看是否切换成功
-gem source -l
+******************************************************************
+******************************************************************
+//先切换gem源
+$ gem sources --remove https://rubygems.org/
+$ gem source -a https://gems.ruby-china.org        //国内最新的腾讯云的源
+//查看是否切换成功
+$ gem source -l
 
-//升级了cocoapods了 1.1.1
-sudo gem install -n /usr/local/bin cocoapods --pre
-*******************************
-*******************************
+// 更新gem
+$ sudo gem update --system 
 
-1、这时候，你再次在终端中运行：
-$ sudo gem install cocoapods
-等上十几秒钟，CocoaPods就可以在你本地下载并且安装好了，不再需要其他设置。
-2、$ pod setup   //发现不动了,就是慢啊,将这些Podspec索引文件更新到本地的~/.cocoapods/目录下。
+//升级了cocoapods: 1.1.1
+$ sudo gem install -n /usr/local/bin cocoapods --pre
+$ pod setup
 
-(还没明白这个意思：不先pod setup 下面这命令打不了)
-使用CocoaPods的镜像索引，如下操作可以将CocoaPods设置成使用akinliu建立的国内服务器镜像，gitcafe（https://gitcafe.com/）和oschina(https://www.oschina.net/)
-$ pod repo remove master
-$ pod repo add master https://gitcafe.com/akuandev/Specs.git   //可换成oschina的地址
-$ pod repo update
+//切换到工程文件夹目录
+$pod install   //或者pod update
+
+******************************************************************
+******************************************************************
 
 ## 3、如何使用CocoaPods？
 
