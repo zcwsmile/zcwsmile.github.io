@@ -34,3 +34,4 @@ favicon: /images_zc/upload/gavatar/favicon.ico
 # disqus 设置
 disqus:
   shortname: zcwsmile
+theme: jekyll-theme-cayman
